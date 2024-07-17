@@ -1,0 +1,85 @@
+// assets/scss/components/header.scss
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 5px 5px rgba(60, 60, 60, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+
+  &__logo {
+    .logo {
+      width: auto;
+      height: 40px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+
+      a {
+        color: $textColor;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primaryColor;
+        }
+      }
+
+      &.dropdown {
+        a {
+          // display: flex;
+          // align-items: center;
+
+          .icon-chevron-down {
+            color: $primaryColor;
+            font-size: 0.8rem;
+            margin-left: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+    .btn-user {
+      color: $primaryColor !important;
+    }
+
+    .btn-search,
+    .btn-user {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: $textColor;
+      margin-right: 1rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+}

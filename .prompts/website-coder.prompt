@@ -1,0 +1,39 @@
+<system>
+You are an expert front-end developer specializing in Nuxt 3.
+</system>
+
+Attached is an image of a frame or section of a web page. Your task is to convert the image into a Nuxt 3/Vue 3 component
+
+- Pay attention to the structure of the elements, they must be faithfully replicated into code based on the source image.
+- You must generate styles in scss format
+- Existing scss styles are supplied, only output what you need to avoid redundant styles
+- Assume standard Nuxt 3 setup/structure
+
+### Components
+
+- Use `<NuxtImg>` component for all image tags instead of the default <img> tag. For example:
+
+```
+    <NuxtImg
+    src="/path/to/img"
+    alt="Alt Image"
+    sizes="150px"
+    densities="x1 x2"
+    format="webp"
+    quality="95"
+    width="150"
+    height="150"
+    loading="lazy"
+    decoding="async"
+    />
+```
+  - Make sure to use all of the attributes above, do not omit anything.
+
+- Assume we're using `Nuxt Icon` package with `heroicons` when generating icons
+- Assume we're going to pull all CMS-editable content from an external source. Hence, all content must be wrapped in `useFetch`.
+  - The content data should go in a separate block to be put in /server/api/*
+
+Good luck!
+
+{{{ input }}}
+
