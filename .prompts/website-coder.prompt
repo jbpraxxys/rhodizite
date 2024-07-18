@@ -29,9 +29,11 @@ Attached is an image of a frame or section of a web page. Your task is to conver
 ```
   - Make sure to use all of the attributes above, do not omit anything.
 
+- Do not put styles on individual components as they mess up web performance forcing repaints when loaded in piece-meal. Instead assume that all styles are centralized on specific scss files
 - Assume we're using `Nuxt Icon` package with `heroicons` when generating icons
 - Assume we're going to pull all CMS-editable content from an external source. Hence, all content must be wrapped in `useFetch`.
   - The content data should go in a separate block to be put in /server/api/*
+- Always follow the data fetching structure. The fetch should be made on the parent component to save on requests/calls to the server. The data should be passed as props to the child component.
 
 Good luck!
 
