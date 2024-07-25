@@ -78,7 +78,7 @@ hr {
 .btn-primary {
   background-color: $primaryColor;
   color: #fff;
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
@@ -89,4 +89,8 @@ hr {
   &:hover {
     background-color: darken($primaryColor, 10%);
   }
+}
+
+.checkered-bg {
+  background: url(/img/home/texture-bg.webp) repeat;
 }

@@ -179,7 +179,7 @@ export default defineEventHandler(() => {
       ],
     },
     testimonial: {
-      imageSrc: "/img/testimonials/jak-madrid.webp",
+      imageSrc: "/img/home/jack-madrid.png",
       name: "Jak Madrid",
       position: "President and CEO",
       quote:

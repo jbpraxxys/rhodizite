@@ -13,7 +13,7 @@
           <span class="home-stats__label">{{ stat.label }}</span>
         </div>
       </div>
-      <NuxtLink :to="statisticsData.ctaLink" class="home-stats__cta">
+      <NuxtLink :to="statisticsData.ctaLink" class="btn btn-primary">
         {{ statisticsData.ctaText }}
       </NuxtLink>
     </div>

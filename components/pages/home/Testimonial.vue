@@ -1,6 +1,6 @@
 <!-- components/PagesHomeTestimonial.vue -->
 <template>
-  <section class="testimonial-section">
+  <section class="testimonial-section checkered-bg">
     <div class="container">
       <div class="testimonial-content">
         <div class="testimonial-image">
@@ -20,8 +20,8 @@
         <h2 class="testimonial-name">{{ testimonialData.name }}</h2>
         <p class="testimonial-position">{{ testimonialData.position }}</p>
         <div class="testimonial-quote">
-          <Icon name="heroicons:quote-left" class="quote-icon" />
-          <p>{{ testimonialData.quote }}</p>
+          <Icon name="icon-park-outline:quote" class="quote-icon" />
+          <h3>{{ testimonialData.quote }}</h3>
         </div>
       </div>
     </div>

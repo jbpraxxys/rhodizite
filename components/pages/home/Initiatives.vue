@@ -1,6 +1,6 @@
 <!-- components/pages/home/Initiatives.vue -->
 <template>
-  <section class="ibpap-initiatives">
+  <section class="ibpap-initiatives checkered-bg">
     <div class="container">
       <div class="initiatives-layout">
         <div class="content">
