@@ -4,11 +4,11 @@
         <div class="px-4 lg:px-4 xl:px-20 mx-auto lg:py-4 flex items-center justify-between transition header-wrapper"
             :class="headerScroll ? 'py-2' : 'py-6'">
             <div class="hdr-logo lg:w-auto">
-                <a href="/">
+                <NuxtLink to="/">
                     <img :src="config.public.storage + header?.content?.section1_logo" alt="logo"
                         class="lg:h-[68px] max-w-full mx-auto transition duration-700 header-logo"
                         :class="headerScroll ? 'h-[64px]' : 'brightness-0 invert h-[61px]'" async>
-                </a>
+                </NuxtLink>
             </div>
             <div @click="toggleMenu" class="hamburger-menu pr-3" :class="menuOpen ? 'active' : ''">
                 <div class="bar" :class="headerScroll ? 'scroll' : ''"></div>
@@ -19,106 +19,101 @@
                     menuOpen ? 'translate-x-0' : 'translate-x-[110%] lg:translate-x-0'
                 ]">
                 <div v-for="parent_page in parent_pages" :key="parent_page.id" class="relative group-hover text-sm">
-                    <div
-                        class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <a :href="parent_page.sub_pages.length == 0 ? route('web.pages.parent-page', {
-                            parentPage: parent_page.slug
-                        }) : '#'">
-                            {{ parent_page.title }}
-                        </a>
-                        <svg v-if="parent_page.sub_pages.length > 0 || parent_page.title === 'Industries'"
-                            class="rotate-180 lg:rotate-0" width="16" height="16" viewBox="0 0 16 16" fill="transparent"
-                            stroke="currentColor">
-                            <path d="M12 6L8 10L4 6" stroke-width="2" />
-                        </svg>
-                    </div>
-                    <div v-if="parent_page.sub_pages.length > 0"
-                        class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[220px] rounded-b-xl lg:shadow-md absolute top-[40px] left-0 hover-child">
-                        <template v-for="sub_page in parent_page.sub_pages">
-                            <div v-if="sub_page.child_pages.length > 0" class="relative group-hover2">
-                                <div
-                                    class="flex items-center space-x-2.5 hover:text-primary-600 transition lg:justify-normal justify-between">
-                                    <p class="whitespace-nowrap">{{ sub_page.title }}</p>
-                                    <div>
-                                        <svg class="lg:block hidden" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="transparent" stroke="currentColor">
-                                            <path d="M9 6L15 12L9 18" stroke-width="2" />
-                                        </svg>
-                                        <svg class="lg:hidden block rotate-180 lg:rotate-0" width="16" height="16"
-                                            viewBox="0 0 16 16" fill="transparent" stroke="currentColor">
-                                            <path d="M12 6L8 10L4 6" stroke-width="2" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div
-                                    class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[275px] rounded-b-xl lg:shadow-md absolute -top-1 left-[calc(100%+24px)] hover-child2">
-                                    <a v-for="child_page in sub_page.child_pages"
-                                        class="hover:text-primary-600 transition" :href="route('web.pages.child-page', {
-                                            parentPage: parent_page.slug,
-                                            subPage: sub_page.slug,
-                                            childPage: child_page.slug
-                                        })">
-                                        {{ child_page.title }}
-                                    </a>
+                <div
+                    class="flex items-center space-x-1 hover:text-primary-600 transition lg:w-fit w-full lg:justify-normal justify-between"
+                    :class="parent_page.sub_pages.length == 0 ? 'cursor-pointer' : 'cursor-default'">
+                    <NuxtLink v-if="parent_page.sub_pages.length == 0" :to="`/pages/${parent_page.slug}`">
+                        {{ parent_page.title }}
+                    </NuxtLink>
+                    <span v-else>{{ parent_page.title }}</span>
+                    <svg v-if="parent_page.sub_pages.length > 0 || parent_page.title === 'Industries'"
+                        class="rotate-180 lg:rotate-0" width="16" height="16" viewBox="0 0 16 16" fill="transparent"
+                        stroke="currentColor">
+                        <path d="M12 6L8 10L4 6" stroke-width="2" />
+                    </svg>
+                </div>
+                <div v-if="parent_page.sub_pages.length > 0"
+                    class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[220px] rounded-b-xl lg:shadow-md absolute top-[40px] left-0 hover-child">
+                    <template v-for="sub_page in parent_page.sub_pages">
+                        <div v-if="sub_page.child_pages.length > 0" class="relative group-hover2">
+                            <div
+                                class="flex items-center space-x-2.5 hover:text-primary-600 transition lg:justify-normal justify-between cursor-default">
+                                <p class="whitespace-nowrap">{{ sub_page.title }}</p>
+                                <div>
+                                    <svg class="lg:block hidden" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="transparent" stroke="currentColor">
+                                        <path d="M9 6L15 12L9 18" stroke-width="2" />
+                                    </svg>
+                                    <svg class="lg:hidden block rotate-180 lg:rotate-0" width="16" height="16"
+                                        viewBox="0 0 16 16" fill="transparent" stroke="currentColor">
+                                        <path d="M12 6L8 10L4 6" stroke-width="2" />
+                                    </svg>
                                 </div>
                             </div>
-                            <a v-else class="hover:text-primary-600 transition" :href="route('web.pages.sub-page', {
-                                parentPage: parent_page.slug,
-                                subPage: sub_page.slug
-                            })">
-                                {{ sub_page.title }}
-                            </a>
-                        </template>
-                    </div>
-                    <div v-if="parent_page.title === 'Industries'"
-                        class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[250px] rounded-b-xl lg:shadow-md absolute top-[40px] left-0 hover-child">
-                        <a class="hover:text-primary-600 transition" :href="route('web.pages.gaming')">
-                            Gaming and Entertainment
-                        </a>
-                        <a class="hover:text-primary-600 transition" :href="route('web.pages.saas')">
-                            SaaS
-                        </a>
-                        <a class="hover:text-primary-600 transition" :href="route('web.pages.ecommerce')">
-                            E-Commerce
-                        </a>
-                        <a class="hover:text-primary-600 transition" :href="route('web.pages.finance')">
-                            Finance
-                        </a>
-                    </div>
+                            <div
+                                class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[275px] rounded-b-xl lg:shadow-md absolute -top-1 left-[calc(100%+24px)] hover-child2">
+                                <NuxtLink v-for="child_page in sub_page.child_pages"
+                                    class="hover:text-primary-600 transition cursor-pointer" :to="`/pages/${parent_page.slug}/${sub_page.slug}/${child_page.slug}`">
+                                    {{ child_page.title }}
+                                </NuxtLink>
+                            </div>
+                        </div>
+                        <NuxtLink v-else class="hover:text-primary-600 transition cursor-pointer" :to="`/pages/${parent_page.slug}/${sub_page.slug}`">
+                            {{ sub_page.title }}
+                        </NuxtLink>
+                    </template>
                 </div>
+                <div v-if="parent_page.title === 'Industries'"
+                    class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[250px] rounded-b-xl lg:shadow-md absolute top-[40px] left-0 hover-child">
+                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/gaming-and-entertainment">
+                        Gaming and Entertainment
+                    </NuxtLink>
+                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/saas">
+                        SaaS
+                    </NuxtLink>
+                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/e-commerce">
+                        E-Commerce
+                    </NuxtLink>
+                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/finance">
+                        Finance
+                    </NuxtLink>
+                </div>
+            </div>
+
+
                 <div class="relative group-hover text-sm">
                     <div
                         class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <a :href="route('web.resources.index')">
+                        <NuxtLink to="/resources">
                             Resources
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
                 <div class="relative group-hover text-sm">
                     <div
                         class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <a :href="route('web.pages.careers')">
+                        <NuxtLink to="/careers">
                             Careers
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
                 <div class="relative group-hover text-sm">
                     <div
                         class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <a :href="route('web.pages.calculator')">
+                        <NuxtLink to="/calculator">
                             Calculator
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
                 <div>
                     <div class="button-header px-5 py-4 lg:px-0 lg:py-0 text-sm">
-                        <a @click.prevent="handleContactClick" href="/contact-us/#contact-form">
+                        <NuxtLink @click.prevent="handleContactClick" to="/contact-us/#contact-form">
                             <buttons-base-button custom-class="w-full lg:w-auto" v-if="headerScroll ? '' : 'hidden'"
                                 size="md">Contact
                                 Us</buttons-base-button>
                             <buttons-base-button custom-class="w-full lg:w-auto" v-if="headerScroll ? 'hidden' : ''" size="md"
                                 design-color="text-white">Contact Us</buttons-base-button>
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
@@ -134,35 +129,6 @@ const config = useRuntimeConfig();
 const { data: parent_pages } = await get('/parent-pages');
 const { data: header } = await get('/cms-header');
 
-const route = (name: string, params: any = {}) => {
-  // This is a basic implementation. Adjust the routes as needed for your application.
-  switch (name) {
-    case 'web.pages.parent-page':
-      return `/${params.parentPage}`;
-    case 'web.pages.sub-page':
-      return `/${params.parentPage}/${params.subPage}`;
-    case 'web.pages.child-page':
-      return `/${params.parentPage}/${params.subPage}/${params.childPage}`;
-    case 'web.resources.index':
-      return '/resources';
-    case 'web.pages.careers':
-      return '/careers';
-    case 'web.pages.calculator':
-      return '/calculator';
-    case 'web.pages.gaming':
-      return '/industries/gaming';
-    case 'web.pages.saas':
-      return '/industries/saas';
-    case 'web.pages.ecommerce':
-      return '/industries/ecommerce';
-    case 'web.pages.finance':
-      return '/industries/finance';
-    default:
-      return '/';
-  }
-};
-
-
 const handleContactClick = () => {
   if (window.location.pathname === '/contact-us') {
     const contactForm = document.getElementById('contact-form');
@@ -173,9 +139,6 @@ const handleContactClick = () => {
     window.location.href = '/contact-us#contact-form';
   }
 };
-
-
-const page = {};
 
 const headerAnimation = ref(false);
 

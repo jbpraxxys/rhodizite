@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <button @click="prevSlide" class="prev-button">&lt;</button>
+        <button @click="prevSlide" class="prebuttons-base-button">&lt;</button>
         <button @click="nextSlide" class="next-button">&gt;</button>
     </div>
 </template>
@@ -100,7 +100,7 @@ onUnmounted(() => {
     flex: 0 0 100%;
 }
 
-.prev-button,
+.prebuttons-base-button,
 .next-button {
     position: absolute;
     top: 50%;
@@ -112,7 +112,7 @@ onUnmounted(() => {
     cursor: pointer;
 }
 
-.prev-button {
+.prebuttons-base-button {
     left: 10px;
 }
 

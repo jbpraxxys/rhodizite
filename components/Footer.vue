@@ -88,6 +88,4 @@
 const { get } = useApi();
 const config = useRuntimeConfig();
 const { data: footer } = await get('/cms-footer');
-
-console.log(config.public.storage);
 </script>
