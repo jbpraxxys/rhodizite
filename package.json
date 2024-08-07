@@ -16,11 +16,13 @@
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.14",
+    "lightgallery": "^2.7.2",
     "nuxt": "^3.12.3",
     "nuxt-gtag": "^2.0.7",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-schema-org": "^3.3.8",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-recaptcha": "^3.0.0-alpha.6"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
