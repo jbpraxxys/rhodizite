@@ -1,70 +1,93 @@
 <template>
-  <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__logo">
-        <NuxtImg
-          src="/ibpap-logo.png"
-          alt="IBPAP Logo"
-          width="150"
-          height="63"
-          loading="lazy"
-          decoding="async"
-          sizes="150px"
-          format="webp"
-          densities="1x 2x"
-          quality="100"
-        />
-        <p class="footer__address">
-          {{ footerData.address }}
-        </p>
-      </div>
-      <div class="footer__links">
+    <footer class="bg-primary-900">
+        <div class="px-4 lg:px-20 pb-7 pt-16 lg:py-16 flex lg:flex-row flex-col lg:justify-between">
+            <div class="lg:max-w-[373px]">
+                <div class="py-3 mb-2">
+                    <a href="/">
+                        <img class="w-[250px] lg:w-[260px]" :src="config.public.storage + footer.content.section1_logo"
+                            alt="footer-logo" loading="lazy" decoding="async">
+                    </a>
+                </div>
+                <p class="text-white leading-5 mb-8">{{ footer?.content.section1_address }}</p>
+                <div class="flex items-center space-x-6 mb-12 lg:mb-0">
+                    <img v-for="accreditation in footer?.content.section1_accreditation" class="h-[40px] lg:h-[50px] w-fit"
+                        :src="config.public.storage + accreditation.logo" alt="icon" loading="lazy" decoding="async">
+                </div>
+            </div>
+            <div class="max-w-[780px] w-full grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16 text-white text-sm">
+                <div class="space-y-3">
+                    <p class="font-bold text-base">Solutions</p>
+                    <div><a class="hover:text-primary-600 transition" href="/pages/solutions/contact-center">Contact
+                            Center</a>
+                    </div>
+                    <div><a class="hover:text-primary-600 transition" href="/pages/solutions/managed-services">Managed
+                            Services</a></div>
+                    <div><a class="hover:text-primary-600 transition" href="/pages/solutions/staff-leasing">Staff
+                            Leasing</a>
+                    </div>
+                    <div><a class="hover:text-primary-600 transition"
+                            href="/pages/solutions/workforce-management">Workforce
+                            Management</a></div>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-bold text-base">Specializations</p>
+                    <div><a class="hover:text-primary-600 transition"
+                            href="/pages/specialization/creative-services">Creative
+                            Services</a></div>
+                    <div><a class="hover:text-primary-600 transition"
+                            href="/pages/specialization/sales-and-customer-support">Sales and Customer Support</a></div>
+                    <div><a class="hover:text-primary-600 transition"
+                            href="/pages/specialization/sales-and-customer-support/sales-development-services">Sales
+                            Development
+                            Services</a></div>
+                    <div><a class="hover:text-primary-600 transition"
+                            href="/pages/specialization/sales-and-customer-support/customer-success-services">Customer
+                            Success
+                            Services</a></div>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-bold text-base">Industries</p>
+                    <div><a class="hover:text-primary-600 transition" href="/industries/gaming">Entertainment &
+                            Gaming</a></div>
+                    <div><a class="hover:text-primary-600 transition" href="/industries/saas">Product & SaaS</a></div>
+                    <div><a class="hover:text-primary-600 transition" href="/industries/e-commerce">E-Commerce</a></div>
+                    <div><a class="hover:text-primary-600 transition" href="/industries/finance">Finance</a></div>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-bold text-base">Others</p>
+                    <div><a class="hover:text-primary-600 transition" href="/resources">Resources</a></div>
+                    <div><a class="hover:text-primary-600 transition" href="/pages/about-us/our-advantages">About Us</a>
+                    </div>
+                    <div><a class="hover:text-primary-600 transition" href="/careers">Careers</a></div>
+                    <div><a class="hover:text-primary-600 transition" href="/contact-us">Contact Us</a></div>
+                </div>
+            </div>
+        </div>
         <div
-          v-for="(column, index) in footerData.footerColumns"
-          :key="index"
-          class="footer__column"
-        >
-          <h3>{{ column.title }}</h3>
-          <ul>
-            <li v-for="link in column.links" :key="link.text">
-              <NuxtLink :to="link.url">{{ link.text }}</NuxtLink>
-            </li>
-          </ul>
+            class="px-4 pt-4 pb-12 lg:px-20 lg:py-12 flex lg:flex-row flex-col lg:items-center justify-between text-white text-sm lg:text-base lg:space-y-0 space-y-6">
+            <div class="flex lg:items-center lg:space-x-16 lg:flex-row flex-col lg:space-y-0 space-y-6">
+                <p>{{ footer?.content.section1_copyright }}</p>
+                <div class="flex items-start lg:items-center space-x-4 lg:w-auto w-fit">
+                    <a class="hover:text-primary-600 transition" href="/privacy-policy">Privacy Policy</a>
+                    <a class="hover:text-primary-600 transition" href="/terms-and-conditions">Terms</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3.5">
+                <a v-for="social in footer?.content.section2_social_accounts" :href="social.link" target="_blank"
+                    rel="noreferrer">
+                    <img class="w-5" :src="config.public.storage + social.icon" alt="icon" loading="lazy"
+                        decoding="async">
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="footer__partners">
-        <h3>{{ footerData.partnersTitle }}</h3>
-        <div class="footer__partner-logos">
-          <NuxtImg
-            v-for="partner in partners"
-            :key="partner.name"
-            :src="partner.logo"
-            :alt="`${partner.name} logo`"
-            width="50"
-            height="30"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p class="footer__copyright">{{ footerData.copyright }}</p>
-      <div class="footer__social">
-        <NuxtLink
-          v-for="social in footerData.socialLinks"
-          :key="social.name"
-          :to="social.url"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon :name="social.icon" />
-        </NuxtLink>
-      </div>
-    </div>
-  </footer>
+    </footer>
 </template>
 
-<script setup>
-const { data: footerData } = await useFetch("/api/footer", {});
+
+<script setup lang="ts">
+const { get } = useApi();
+const config = useRuntimeConfig();
+const { data: footer } = await get('/cms-footer');
+
+console.log(config.public.storage);
 </script>

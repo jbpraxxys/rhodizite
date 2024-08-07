@@ -1,34 +1,20 @@
 <!-- pages/index.vue -->
 <template>
-  <main class="home-page">
-    <PagesHomeSlider v-if="slidesData" :slidesData="slidesData" />
-    <PagesHomeVideo :videoURL="videoURL" />
-    <PagesHomePlatinumClub
-      :platinumClubLogo="platinumClubLogo"
-      :platinumPartnerLogos="platinumPartnerLogos"
-    />
-    <PagesHomeSecondarySlider
-      v-if="secondarySlidesData"
-      :slidesData="secondarySlidesData"
-    />
-    <PagesHomeInitiatives :initiativesData="initiativesData" />
-    <PagesHomeBenefits :benefitsData="benefitsData" />
-    <PagesHomeTestimonial :testimonialData="testimonialData" />
-    <PagesHomeStats :statisticsData="statisticsData" />
-  </main>
+    <main class="w-full overflow-hidden">
+        <pages-home-frame-one :cms="homeData?.content" />
+        <pages-home-frame-two :cms="homeData?.content" />
+        <pages-home-frame-three :cms="homeData?.content" />
+        <pages-home-frame-four :cms="homeData?.content" />
+        <pages-home-frame-five :cms="homeData?.content" />
+        <pages-home-frame-six :cms="homeData?.content" />
+        <pages-home-frame-seven :cms="homeData?.content" />
+        <pages-home-frame-eight :cms="homeData?.content" />
+    </main>
 </template>
 
 <script setup lang="ts">
-const { data: homeData } = await useFetch("/api/home");
-const slidesData = homeData.value?.slides;
-const secondarySlidesData = homeData.value?.secondarySlides;
-const videoURL = homeData.value?.videoURL;
-const platinumClubLogo = homeData.value?.platinumClubLogo;
-const platinumPartnerLogos = homeData.value?.platinumPartnerLogos;
-const initiativesData = homeData.value?.initiatives;
-const statisticsData = homeData.value?.statistics;
-const benefitsData = homeData.value?.benefits;
-const testimonialData = homeData.value?.testimonial;
+const { get } = useApi();
+const { data: homeData } = await get('/page/home');
 </script>
 
 <style lang="scss">

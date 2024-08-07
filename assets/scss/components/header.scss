@@ -1,85 +1,169 @@
-// assets/scss/components/header.scss
+// header.scss
 
-.header {
-  background-color: #fff;
-  box-shadow: 0 5px 5px rgba(60, 60, 60, 0.1);
+.header-wrapper {
+    transition: all 0.5s ease;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
+.hdr-logo {
+    transition: all 0.5s ease;
+}
 
-  &__logo {
-    .logo {
-      width: auto;
-      height: 40px;
-    }
-  }
+.header-logo {
+    transition: all 0.5s ease;
+}
 
-  &__menu {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      &:not(:last-child) {
-        margin-right: 1.5rem;
-      }
-
-      a {
-        color: $textColor;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: $primaryColor;
-        }
-      }
-
-      &.dropdown {
-        a {
-          // display: flex;
-          // align-items: center;
-
-          .icon-chevron-down {
-            color: $primaryColor;
-            font-size: 0.8rem;
-            margin-left: 0.25rem;
-          }
-        }
-      }
-    }
-  }
-
-  &__actions {
-    display: flex;
+.hamburger-menu {
+    cursor: pointer;
+    display: none;
     align-items: center;
+    justify-content: flex-end;
 
-    .btn-user {
-      color: $primaryColor !important;
+    .bar {
+        width: 14px;
+        height: 1px;
+        border-radius: 2px;
+        background-color: white;
+        transition: 0.5s;
+        position: relative;
+
+        &.scroll {
+            background-color: #1C2C36;
+            &:before,&:after {
+                background-color: #1C2C36;
+            }
+        }
+
+        &:before,&:after {
+            content: "";
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            background-color: white;
+            transition: 0.5s;
+        }
+
+        &:before {
+            transform: translateY(-5px);
+        }
+        &:after {
+            transform: translateY(5px);
+        }
     }
 
-    .btn-search,
-    .btn-user {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: $textColor;
-      margin-right: 1rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-
-      &:hover {
-        color: $primaryColor;
-      }
+    &.active {
+        .bar {
+            transform: rotate(360deg);
+            background-color: transparent;
+            &:before {
+                transform: translateY(0) rotate(45deg);
+            }
+            &:after {
+                transform: translateY(0) rotate(-45deg);
+            }
+        }
     }
-  }
+}
+
+.nav-menu {
+    transition: all 0.5s ease;
+}
+
+.group-hover {
+    .hover-child {
+        max-height: 0;
+        padding: 0 24px;
+        overflow: hidden;
+        transition: all 0.34s ease;
+    }
+
+    &:hover {
+        .hover-child {
+            max-height: 999px;
+            padding: 24px;
+            overflow: visible;
+        }
+    }
+}
+
+.group-hover2 {
+    .hover-child2 {
+        max-height: 0;
+        padding: 0 24px;
+        overflow: hidden;
+        transition: all 0.34s ease;
+    }
+
+    &:hover {
+        .hover-child2 {
+            max-height: 300px;
+            padding: 24px;
+        }
+    }
+}
+
+.button-header {
+    // No specific styles in the original code
+}
+
+@media screen and (max-width: 1023px) {
+    .header-wrapper,.header-logo,.nav-menu {
+        transition: all 0.5s ease;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-menu {
+        background-color: white;
+        right: 0;
+        height: calc(100vh - 109px);
+        width: 80%;
+        padding: 0 20px;
+        padding-top: 80px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        &.scroll {
+            height: calc(100vh - 80px);
+        }
+    }
+
+    .group-hover {
+        .hover-child {
+            position: relative;
+            top: auto;
+            max-height: 999px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 16px;
+            * {
+                font-weight: 400 !important;
+            }
+        }
+    }
+
+    .group-hover2 {
+        .hover-child2 {
+            position: relative;
+            top: auto;
+            left: 0;
+            max-height: 999px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 16px;
+            * {
+                font-weight: 400 !important;
+            }
+        }
+    }
+
+    .button-header {
+        position: absolute;
+        top: 0;
+        transition: all 0.5s ease;
+        right: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 10;
+    }
 }

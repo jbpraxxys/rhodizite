@@ -1,0 +1,12 @@
+<template>
+    <nuxt-img 
+        src="/img/home/frameone.webp"
+        alt="mockup-banner"
+        format="webp"
+        quality="95"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="w-full"
+    />
+</template>
