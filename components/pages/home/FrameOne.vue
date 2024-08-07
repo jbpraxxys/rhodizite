@@ -2,7 +2,7 @@
     <section class="relative lg:h-screen">
         <div
             class="px-4 lg:px-20 pt-[141px] lg:pt-[150px] lg:absolute lg:top-0 lg:left-0 z-[2] lg:bg-transparent bg-primary-900">
-            <div class="w-full lg:w-[36vw] text-white">
+            <div :class="['w-full lg:w-[36vw] transition duration-1000', textColorClass]">
                 <div class="[&>*]:[&>*]:text-5xl [&>*]:text-5xl [&>*]:leading-tight lg:[&>*]:leading-[5.8vw] lg:[&>*]:[&>*]:text-[5.1vw] lg:[&>*]:text-[5.1vw] mb-4 font-bold ck-content text-highlight lg:min-h-0 min-h-[256px]"
                     v-html="cms?.section1_title" />
                 <div class="max-w-[400px] mb-8 lg:mb-12">
@@ -31,6 +31,8 @@ defineProps({
     }
 })
 
+const textColorClass = ref('text-gray-400');
+
 const showBackground = ref(false)
 const breakpoints = useBreakpoints({
   lg: 1024, // Adjust this value if needed to match your lg breakpoint
@@ -43,5 +45,10 @@ onMounted(() => {
     setTimeout(() => {
         showBackground.value = true
     }, delay)
+
+    // Change text color after 0.5 seconds
+    setTimeout(() => {
+        textColorClass.value = 'text-white'
+    }, 500)
 })
 </script>

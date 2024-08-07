@@ -1,44 +1,46 @@
 <template>
-    <NuxtLazyHydrate :when-triggered="idleTrigger" @hydrated="onHydrated">
-        <Header />
-        <NuxtPage />
-        <Footer />
-        <LazyDefer v-if="loadDeferred" />
-    </NuxtLazyHydrate>
-    <div></div>
+  <NuxtLazyHydrate :when-triggered="idleTrigger" @hydrated="onHydrated">
+    <Header :custom-class="headerState.state.customClass" />
+    <main class="overflow-x-hidden">
+      <NuxtPage />
+    </main>
+    <Footer />
+    <LazyDefer v-if="loadDeferred" />
+  </NuxtLazyHydrate>
+  <div></div>
 </template>
-<script>
-export default {
-    async setup() {
-        const idleTrigger = ref(false);
-        const loadDeferred = ref(false);
 
-        function fireTrigger() {
-            idleTrigger.value = true;
-        }
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useHeaderState } from '~/composables/useHeaderState';
 
-        onMounted(() => {
-            const delay = detectMobile() ? 5000 : 2500;
+const headerState = useHeaderState()
+const idleTrigger = ref(false)
+const loadDeferred = ref(false)
 
-            const loadScripts = async () => {
-                setTimeout(fireTrigger, delay);
-            };
+function fireTrigger() {
+  idleTrigger.value = true
+}
 
-            if (document.readyState === "complete") {
-                loadScripts();
-            } else {
-                window.addEventListener("load", loadScripts);
-            }
-        });
+onMounted(() => {
+  const delay = detectMobile() ? 5000 : 2500
 
-        const onHydrated = () => {
-            loadDeferred.value = true;
-        };
+  const loadScripts = async () => {
+    setTimeout(fireTrigger, delay)
+  }
 
-        return { idleTrigger, loadDeferred, onHydrated };
-    },
-};
+  if (document.readyState === "complete") {
+    loadScripts()
+  } else {
+    window.addEventListener("load", loadScripts)
+  }
+})
+
+const onHydrated = () => {
+  loadDeferred.value = true
+}
 </script>
+
 <style lang="scss">
 @import "~/assets/scss/main.scss";
 </style>

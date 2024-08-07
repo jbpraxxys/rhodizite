@@ -21,6 +21,7 @@
     "nuxt-gtag": "^2.0.7",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-schema-org": "^3.3.8",
+    "swiper": "^11.1.9",
     "vue": "latest",
     "vue-recaptcha": "^3.0.0-alpha.6"
   },

@@ -1,6 +1,6 @@
 <template>
     <header ref="headRef" class="w-full fixed top-0 left-0 z-[90] transition"
-        :class="[headerScroll ? '!bg-white shadow-md' : 'bg-primary-900', customClass]">
+        :class="[headerScroll ? 'scroll shadow-md' : 'bg-primary-900', customClass]">
         <div class="px-4 lg:px-4 xl:px-20 mx-auto lg:py-4 flex items-center justify-between transition header-wrapper"
             :class="headerScroll ? 'py-2' : 'py-6'">
             <div class="hdr-logo lg:w-auto">
@@ -128,6 +128,10 @@ const { get } = useApi();
 const config = useRuntimeConfig();
 const { data: parent_pages } = await get('/parent-pages');
 const { data: header } = await get('/cms-header');
+
+const props = defineProps<{
+  customClass: string
+}>()
 
 const handleContactClick = () => {
   if (window.location.pathname === '/contact-us') {

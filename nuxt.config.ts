@@ -36,6 +36,9 @@ export default defineNuxtConfig({
         // declare your google fonts here
         families: {
             Poppins: [200, 400, 600, 700, 900],
+            "Alfa Slab One": [400],
+            Gabarito: [900],
+            Righteous: [400],
         },
         display: "fallback",
         preload: true,
