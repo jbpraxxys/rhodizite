@@ -1,14 +1,14 @@
 <template>
     <div class="relative">
-        <label :for="id" class="text-xs text-cstm-dark-72 uppercase">
+        <label :for="id" class="block text-sm text-gray-500 mb-2">
             {{ label }}
-            <span v-if="required" class="text-red-500 ml-1">*</span>
+            <span v-if="required" class="text-red-600 ml-0.5">*</span>
         </label>
-        <div class="relative">
+        <div class="relative bg-white rounded-md border">
             <button
                 @click="toggleDropdown"
                 type="button"
-                class="relative w-full border-b border-cstm-dark-base text-gray-400 py-2 pl-3 pr-10 text-left cursor-default focus:outline-none focus:ring-0 focus:border-cstm-dark-base"
+                class="h-11 px-4 py-2.5 text-sm w-full text-left"
                 aria-haspopup="listbox"
                 aria-expanded="true"
                 aria-labelledby="listbox-label"
@@ -18,7 +18,7 @@
                 :class="[
                     error
                         ? 'text-red-500 border-red-500'
-                        : 'text-cstm-gray-800 border-gray-100 focus:border-brand-primary',
+                        : 'text-gray-500 border-gray-100 focus:border-brand-primary',
                         disabled ? 'bg-gray-200 cursor-not-allowed' : '',
                 ]">
                     {{ selected }}
@@ -28,7 +28,7 @@
                     class="block text-sm">
                     {{ placeholder }}
                 </span>
-                <span class="absolute bottom-2 right-0 flex items-center pr-2 pointer-events-none">
+                <span class="absolute top-1/2 -translate-y-1/2 right-0 flex items-center pr-2 pointer-events-none">
                     <Icon name="heroicons:chevron-down" class="text-xl ml-2 text-cstm-dark-base"/>
                 </span>
             </button>
@@ -43,7 +43,7 @@
             >
                 <ul
                     v-if="isOpen"
-                    class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 p-4 overflow-auto focus:outline-none sm:text-sm"
+                    class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 overflow-auto focus:outline-none sm:text-sm"
                     :class="topOptions ? 'bottom-12' : ''"
                     tabindex="-1"
                     role="listbox"
@@ -56,10 +56,10 @@
                         @click="select(item.id)"
                         :class="[
                             modelValue == item.id
-                                ? 'bg-gray-300'
+                                ? 'bg-gray-200'
                                 : item.unavailable
-                                ? 'text-cstm-gray-800 cursor-default'
-                                : 'text-cstm-gray-800 cursor-pointer hover:bg-cstm-dark-8',
+                                ? 'text-gray-800 cursor-default'
+                                : 'text-gray-800 cursor-pointer hover:bg-gray-100',
                             'select-none relative py-2 px-3',
                             item.hidden ? 'hidden' : '',
                             item.unavailable ? 'opacity-50' : ''

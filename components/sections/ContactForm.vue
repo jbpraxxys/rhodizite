@@ -114,14 +114,15 @@
                         >
                             Submit
                         </buttons-base-button>
+
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- <v-success-modal
-        :show="showSuccessModal"
+    <modals-success-modal 
+        :show="showSuccessModal" 
         @close="showSuccessModal = false"
         title="Inquiry Submitted!"
         description="Inquiry has been successfully submitted"
@@ -136,7 +137,7 @@
                 </buttons-base-button>
             </div>
         </template>
-    </v-success-modal> -->
+    </modals-success-modal>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, defineAsyncComponent } from "vue";

@@ -47,7 +47,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { usePage, router } from "@inertiajs/vue3";
 import { useDropzone } from "vue3-dropzone";
 
 const props = defineProps({
@@ -106,6 +105,10 @@ const props = defineProps({
     deleteImageRoute: {
         type: String,
         default: null
+    },
+    storageUrl: {
+        type: String,
+        default: "",
     },
 })
 
@@ -179,7 +182,6 @@ const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     });
 
 // displayed image
-const storageUrl = computed(() => usePage().props.storage_url);
 const displaySrc = computed(() => {
     if (acceptedFileSrcs.value.length) {
         return acceptedFileSrcs.value[0];
@@ -210,10 +212,9 @@ const fileDelete = (key) => {
 }
 
 const deleteOldImage = (id) => {
-    router.delete(
-        route(props.deleteImageRoute, id),
-        { preserveState: false }
-    );
+  // Replace this with your own method to delete the image
+  // For example, you might want to emit an event to the parent component
+  emit('delete-old-image', id);
 }
 
 const previewFileDownload = (item) => {
