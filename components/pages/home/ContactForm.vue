@@ -7,7 +7,7 @@
                 <p class="font-semibold text-3xl mb-3">Let's Chat!</p>
                 <p>Drop us a line and access reliable solutions.</p>
             </div>
-            <form @submit.prevent="submit" class="hm-contact grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-4">
+            <form class="hm-contact grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-4">
                 <div>
                     <inputs-text-input label="Full Name" placeholder="Enter full name here" id="full_name" name="full_name"
                         v-model="form.full_name" :error="errors.full_name" />
@@ -31,12 +31,15 @@
                 </div>
                 <div class="col-span-full flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between pt-2">
                     <div>
-                        <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
-                            ref="grecaptcha"></vue-recaptcha>
+                        <!-- <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
+                            ref="grecaptcha"></vue-recaptcha> -->
                     </div>
                     <div>
-                        <buttons-base-button custom-class="h-12 px-6 !text-base" @click="submit"
+                        <!-- <buttons-base-button custom-class="h-12 px-6 !text-base" @click="submit"
                             :disabled="!form.recaptcha_response">
+                            Submit
+                        </buttons-base-button> -->
+                        <buttons-base-button custom-class="h-12 px-6 !text-base" @click.prevent="submit"  type="button">
                             Submit
                         </buttons-base-button>
                     </div>
@@ -44,10 +47,29 @@
             </form>
         </div>
     </div>
+    <modals-success-modal 
+        :show="showSuccessModal" 
+        @close="showSuccessModal = false"
+        title="Inquiry Submitted!"
+        description="Inquiry has been successfully submitted"
+    >
+        <template #button>
+            <div class="flex items-center justify-end">
+                <buttons-base-button 
+                    @click="reload"
+                    design-color="text-white"
+                >
+                    Confirm
+                </buttons-base-button>
+            </div>
+        </template>
+    </modals-success-modal>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from "vue";
+
+const api = useApi();
 
 const form = reactive({
     full_name: '',
@@ -58,7 +80,7 @@ const form = reactive({
     recaptcha_response: null,
 });
 
-const errors = ref({});
+const errors = ref<Record<string, string>>({});
 
 const emit = defineEmits(['close', 'showSuccess'])
 
@@ -77,40 +99,47 @@ const reload = () => {
     location.reload();
 }
 
-const submitUrl = '/api/inquiry/submit'; // Replace with your actual API endpoint
-
+const isSubmitting = ref(false);
 const submit = async () => {
-    try {
-        const response = await fetch(submitUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-            },
-            body: JSON.stringify(form)
-        });
+    if (isSubmitting.value) return;
+    isSubmitting.value = true;
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            if (errorData.errors) {
-                errors.value = errorData.errors;
+    try {
+        console.log('Submitting form:', form);
+        const { data, error } = await api.post('/inquiry', { ...form });  // Spread the form object
+
+        // Check if there's an error in the response
+        if (error.value || (data.value && data.value.error)) {
+            // If there's an error, parse it and set individual field errors
+            const errorData = error.value || data.value.error;
+            if (errorData && errorData.data && errorData.data.errors) {
+                Object.keys(errorData.data.errors).forEach(key => {
+                    errors.value[key] = errorData.data.errors[key][0];
+                });
             } else {
-                throw new Error('Server error');
+                // If the error structure is different, set a general error
+                errors.value = { general: 'An error occurred. Please try again.' };
             }
             return;
         }
 
-        const data = await response.json();
+        // If no errors, proceed with success handling
         emit('showSuccess');
         showSuccessModal.value = true;
         // Reset form
         Object.keys(form).forEach(key => form[key] = '');
         form.recaptcha_response = null;
         errors.value = {};
-    } catch (error) {
+    } catch (error: any) {
         console.error('An error occurred:', error);
+        errors.value = { general: 'An unexpected error occurred. Please try again.' };
+    } finally {
+        isSubmitting.value = false;
     }
 };
+
+
+
 
 const sitekey = "6Leg04gpAAAAAJvzhxc0KaQU-KvKrnWFWx3u9Gi7";
 

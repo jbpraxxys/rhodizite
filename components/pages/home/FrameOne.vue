@@ -15,7 +15,7 @@
                 </nuxt-link>
             </div>
         </div>
-        <div class="lg:min-h-0 min-h-[386px] h-full bg-primary-900 lg:bg-transparent">
+        <div class="lg:min-h-0 min-h-[386px] h-full bg-primary-900 lg:bg-white">
             <pages-home-frame-one-mock v-if="!showBackground" />
             <pages-home-frame-one-bg v-if="showBackground" class="lg:w-full w-[150%] relative right-[50%] lg:right-0" />
         </div>
@@ -41,7 +41,7 @@ const breakpoints = useBreakpoints({
 const isLargeScreen = breakpoints.greater('lg')
 
 onMounted(() => {
-    const delay = isLargeScreen.value ? 1500 : 5000 // 1.5 seconds for desktop, 5 seconds for mobile
+    const delay = isLargeScreen.value ? 2500 : 5000 // 1.5 seconds for desktop, 5 seconds for mobile
     setTimeout(() => {
         showBackground.value = true
     }, delay)
@@ -49,6 +49,6 @@ onMounted(() => {
     // Change text color after 0.5 seconds
     setTimeout(() => {
         textColorClass.value = 'text-white'
-    }, 500)
+    }, 2000)
 })
 </script>

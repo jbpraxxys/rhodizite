@@ -21,7 +21,7 @@
                         id="solution"
                         name="solution"
                         v-model="form.solution"
-                        :error="form.errors.solution"
+                        :error="errors.solution"
                     />
                 </div>
                 <div>
@@ -31,7 +31,7 @@
                         id="roles"
                         name="roles"
                         v-model="form.role"
-                        :error="form.errors.role"
+                        :error="errors.role"
                     />
                 </div>
                 <div>
@@ -41,7 +41,7 @@
                         id="fullname"
                         name="fullname"
                         v-model="form.full_name"
-                        :error="form.errors.full_name"
+                        :error="errors.full_name"
                     />
                 </div>
                 <div>
@@ -51,7 +51,7 @@
                         id="company"
                         name="company"
                         v-model="form.company"
-                        :error="form.errors.company"
+                        :error="errors.company"
                     />
                 </div>
                 <div>
@@ -61,7 +61,7 @@
                         id="position"
                         name="position"
                         v-model="form.position"
-                        :error="form.errors.position"
+                        :error="errors.position"
                     />
                 </div>
                 <div>
@@ -72,7 +72,7 @@
                         id="industry"
                         name="industry"
                         v-model="form.industry"
-                        :error="form.errors.industry"
+                        :error="errors.industry"
                     />
                 </div>
                 <div>
@@ -83,7 +83,7 @@
                         id="email"
                         name="email"
                         v-model="form.email"
-                        :error="form.errors.email"
+                        :error="errors.email"
                     />
                 </div>
                 <div>
@@ -93,24 +93,31 @@
                         id="phone"
                         name="phone"
                         v-model="form.phone"
-                        :error="form.errors.phone"
+                        :error="errors.phone"
                     />
                 </div>
                 <div class="col-span-full flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between pt-2">
-                    <!-- <div>
-                        <vue-recaptcha
-                            :sitekey="sitekey"
-                            @verify="verifySubmission"
-                            @expired="expiredRecaptcha"
-                            ref="grecaptcha"
-                        ></vue-recaptcha>
-                    </div> -->
                     <div>
-                        <buttons-base-button 
+                        <!-- <vue-recaptcha
+                            ref="recaptchaRef"
+                            :sitekey="config.public.sitekey"
+                            @verify="verifyRecaptcha"
+                        /> -->
+                    </div>
+                    <div>
+                        <!-- <buttons-base-button 
                             custom-class="h-12 px-6 !text-base" 
                             @click="submit"
                             :designColor="designColor"
                             :disabled="!form.recaptcha_response"
+                        >
+                            Submit
+                        </buttons-base-button> -->
+
+                        <buttons-base-button 
+                            custom-class="h-12 px-6 !text-base" 
+                            @click="submit"
+                            :designColor="designColor"
                         >
                             Submit
                         </buttons-base-button>
@@ -140,12 +147,10 @@
     </modals-success-modal>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref, defineAsyncComponent } from "vue";
-const VueRecaptcha = defineAsyncComponent({
-  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
-  loadingComponent: () => '<div>Loading...</div>',
-  delay: 200,
-});
+import { onMounted, ref } from "vue";
+// import VueRecaptcha from 'vue-recaptcha';
+
+const api = useApi();
 
 defineProps({
     customClass: {
@@ -191,6 +196,8 @@ const industries = [
     { id: 'Others', value: 'Others'},
 ]
 
+const config = useRuntimeConfig();
+
 const form = reactive({
   solution: null,
   role: null,
@@ -204,36 +211,54 @@ const form = reactive({
   errors: {}, // Initialize the errors object
 });
 
+const errors = ref<Record<string, string>>({});
+const showSuccessModal = ref(false);
+const isSubmitting = ref(false);
+
 const emit = defineEmits(['close', 'showSuccess'])
 
-const verifySubmission = () => {
-    form.recaptcha_response = true;
-};
+const recaptchaRef = ref(null)
+const recaptchaResponse = ref(null)
 
-const expiredRecaptcha = () => {
-    form.recaptcha_response = null;
-};
-
-const showSuccessModal = ref(false);
+const verifyRecaptcha = (response) => {
+  recaptchaResponse.value = response
+}
 
 const reload = () => {
     showSuccessModal.value = false;
     location.reload();
 }
 
-const submitUrl = '';
-const submit = () => {
-    form.post(submitUrl, {
-        preserveScroll: true,
-        onSuccess: () => {
-        emit('showSuccess')
-        showSuccessModal.value = true;
-        form.reset();
-        },
-    });
-};
+const submit = async () => {
+    if (isSubmitting.value) return;
+    isSubmitting.value = true;
 
-const sitekey = "6Leg04gpAAAAAJvzhxc0KaQU-KvKrnWFWx3u9Gi7";
+    try {
+        const { data, error } = await api.post('/subscription', { ...form });
+
+        if (error.value || (data.value && data.value.error)) {
+            const errorData = error.value || data.value.error;
+            if (errorData && errorData.data && errorData.data.errors) {
+                Object.keys(errorData.data.errors).forEach(key => {
+                    errors.value[key] = errorData.data.errors[key][0];
+                });
+            } else {
+                errors.value = { general: 'An error occurred. Please try again.' };
+            }
+            return;
+        }
+
+        emit('showSuccess');
+        showSuccessModal.value = true;
+        Object.keys(form).forEach(key => form[key] = '');
+        errors.value = {};
+    } catch (error: any) {
+        console.error('An error occurred:', error);
+        errors.value = { general: 'An unexpected error occurred. Please try again.' };
+    } finally {
+        isSubmitting.value = false;
+    }
+};
 
 onMounted(() => {
 

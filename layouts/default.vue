@@ -1,6 +1,6 @@
 <template>
     <NuxtLazyHydrate :when-triggered="idleTrigger" @hydrated="onHydrated">
-        <Header :customClass="headerState.customClass" />
+        <Header :custom-class="headerState.customClass.customClass" :key="headerState.customClass.customClass" />
         <main class="overflow-x-hidden">
             <NuxtPage />
         </main>
@@ -17,6 +17,10 @@ import { useHeaderState } from '~/composables/useHeaderState'
 const idleTrigger = ref(false)
 const loadDeferred = ref(false)
 const headerState = useHeaderState()
+
+watch(() => headerState.customClass.customClass, (newValue) => {
+  console.log('default.vue: headerState.customClass changed:', newValue);
+});
 
 function fireTrigger() {
     idleTrigger.value = true
