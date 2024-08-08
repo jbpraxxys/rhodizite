@@ -15,13 +15,15 @@ const { get } = useApi();
 const { data: cms } = await get('/page/industries-gaming');
 
 const headerState = useHeaderState();
-onMounted(() => {
-  headerState.setCustomClass('gaming');
-})
-onUnmounted(() => {
-  headerState.setCustomClass('')
-})
 
+onMounted(async () => {
+  await nextTick();
+  headerState.setCustomClass('gaming');
+});
+
+onUnmounted(() => {
+  headerState.setCustomClass('');
+});
 
 import "swiper/css/navigation";
 import "swiper/css/free-mode";

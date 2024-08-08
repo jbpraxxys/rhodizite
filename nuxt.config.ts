@@ -67,6 +67,14 @@ export default defineNuxtConfig({
                             context: __dirname,
                             request: './components/pages/home/FrameOne.vue'
                         }),
+                        new (require('webpack').PrefetchPlugin)({
+                        context: __dirname,
+                        request: './components/pages/home/FrameOneMock.vue'
+                        }),
+                        new (require('webpack').PrefetchPlugin)({
+                        context: __dirname,
+                        request: './components/pages/home/FrameOneBg.vue'
+                        })
                     );
                 }
             });
@@ -83,6 +91,12 @@ export default defineNuxtConfig({
             // Add FrameOne.vue to prefetch
             if (manifest['components/pages/home/FrameOne.vue']) {
                 manifest['components/pages/home/FrameOne.vue'].prefetch = true;
+            }
+            if (manifest['components/pages/home/FrameOneMock.vue']) {
+                manifest['components/pages/home/FrameOneMock.vue'].prefetch = true;
+            }
+            if (manifest['components/pages/home/FrameOneBg.vue']) {
+                manifest['components/pages/home/FrameOneBg.vue'].prefetch = true;
             }
         },
     },

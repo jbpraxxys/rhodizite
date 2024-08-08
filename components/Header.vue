@@ -129,9 +129,13 @@ const config = useRuntimeConfig();
 const { data: parent_pages } = await get('/parent-pages');
 const { data: header } = await get('/cms-header');
 
+import { useHeaderState } from '~/composables/useHeaderState';
+
 const props = defineProps<{
   customClass: string
-}>()
+}>();
+
+const headerState = useHeaderState();
 
 const handleContactClick = () => {
   if (window.location.pathname === '/contact-us') {

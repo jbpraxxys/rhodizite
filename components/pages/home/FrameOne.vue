@@ -15,8 +15,8 @@
                 </nuxt-link>
             </div>
         </div>
-        <div class="lg:min-h-0 min-h-[386px] h-full">
-            <pages-home-frame-one-mock :class="!showBackground ? 'opacity-1' : 'opacity-0'" class="absolute lg:w-full w-[150%] right-[50%] lg:right-0 transition duration-1000" />
+        <div class="lg:min-h-0 min-h-[386px] h-full bg-primary-900 lg:bg-transparent">
+            <pages-home-frame-one-mock v-if="!showBackground" />
             <pages-home-frame-one-bg v-if="showBackground" class="lg:w-full w-[150%] relative right-[50%] lg:right-0" />
         </div>
     </section>

@@ -1,16 +1,14 @@
-import { ref, reactive } from 'vue'
+import { ref, readonly } from "vue";
 
-const state = reactive({
-  customClass: ''
-})
+const customClass = ref("");
 
-export const useHeaderState = () => {
-  const setCustomClass = (newClass: string) => {
-    state.customClass = newClass
-  }
+export function useHeaderState() {
+    const setCustomClass = (newClass: string) => {
+        customClass.value = newClass;
+    };
 
-  return {
-    state,
-    setCustomClass
-  }
+    return {
+        customClass: readonly(customClass),
+        setCustomClass,
+    };
 }
