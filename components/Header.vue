@@ -132,8 +132,12 @@ const { data: header } = await get('/cms-header');
 import { useHeaderState } from '~/composables/useHeaderState';
 
 const props = defineProps<{
-  customClass: string
+  customClass?: string
 }>();
+
+watch(() => props.customClass, (newValue) => {
+  console.log('customClass changed:', newValue);
+});
 
 const headerState = useHeaderState();
 
@@ -181,6 +185,15 @@ const headerScroll = ref(false);
 // }
 
 onMounted(() => {
+    watch(() => headerState.customClass.customClass, (newValue) => {
+        if (headRef.value) {
+            headRef.value.classList.remove('gaming', 'saas', 'e-commerce', 'finance');
+            if (newValue) {
+                headRef.value.classList.add(newValue);
+            }
+        }
+    }, { immediate: true });
+    
     var prev = window.pageYOffset;
     window.addEventListener("scroll", () => {
         var curr = window.pageYOffset;

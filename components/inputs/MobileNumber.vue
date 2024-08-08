@@ -1,5 +1,5 @@
 <template>
-    <v-text-input
+    <inputs-text-input
         :add_on_left="true"
         add_on_text="+63"
         custom-class="!pl-1"

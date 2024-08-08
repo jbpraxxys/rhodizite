@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label v-if="label" class="block text-sm text-gray-900 mb-1">{{ label }}</label>
+        <label v-if="label" class="block text-sm text-gray-500 mb-1">{{ label }}</label>
         <div v-bind="getRootProps()" class="flex items-center space-x-6">
             <div class="w-[calc(100%-134px)] bg-white text-gray-400 text-sm px-4 h-11 flex items-center justify-center rounded-md">
                 <div class="w-full">
@@ -14,15 +14,6 @@
                     type="file"
                     class="sr-only"
                 />
-                 <!-- External error -->
-                <p
-                    v-if="error"
-                    class="mt-2 text-sm"
-                    :class="error ? 'text-red-600' : 'text-gray-800'"
-                    id="email-error"
-                >
-                    {{ error }}
-                </p>
 
                 <!-- Reject error -->
                 <p
@@ -42,6 +33,15 @@
                 <p class="absolute top-1/2 w-full text-center -translate-y-1/2 text-sm">Choose File</p>
             </div>
         </div>
+        <!-- External error -->
+        <p
+            v-if="error"
+            class="mt-2 text-sm"
+            :class="error ? 'text-red-600' : 'text-gray-800'"
+            id="email-error"
+        >
+            {{ error }}
+        </p>
     </div>
 </template>
 

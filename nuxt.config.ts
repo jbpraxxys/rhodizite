@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         public: {
             apiBaseUrl: process.env.API_BASE_URL,
             storage: process.env.STORAGE_BASE_URL,
+            siteKey: process.env.RECAPTCHA_SITE_KEY,
         }
     },
     devtools: { enabled: true },
@@ -62,20 +63,12 @@ export default defineNuxtConfig({
             configs.forEach((config) => {
                 if (config.name === 'client') {
                     config.plugins = config.plugins || [];
-                    config.plugins.push(
-                        new (require('webpack').PrefetchPlugin)({
-                            context: __dirname,
-                            request: './components/pages/home/FrameOne.vue'
-                        }),
-                        new (require('webpack').PrefetchPlugin)({
-                        context: __dirname,
-                        request: './components/pages/home/FrameOneMock.vue'
-                        }),
-                        new (require('webpack').PrefetchPlugin)({
-                        context: __dirname,
-                        request: './components/pages/home/FrameOneBg.vue'
-                        })
-                    );
+                    // config.plugins.push(
+                    //     new (require('webpack').PrefetchPlugin)({
+                    //         context: __dirname,
+                    //         request: './components/pages/home/FrameOne.vue'
+                    //     }),
+                    // );
                 }
             });
         },
@@ -89,15 +82,9 @@ export default defineNuxtConfig({
                 }
             }
             // Add FrameOne.vue to prefetch
-            if (manifest['components/pages/home/FrameOne.vue']) {
-                manifest['components/pages/home/FrameOne.vue'].prefetch = true;
-            }
-            if (manifest['components/pages/home/FrameOneMock.vue']) {
-                manifest['components/pages/home/FrameOneMock.vue'].prefetch = true;
-            }
-            if (manifest['components/pages/home/FrameOneBg.vue']) {
-                manifest['components/pages/home/FrameOneBg.vue'].prefetch = true;
-            }
+            // if (manifest['components/pages/home/FrameOne.vue']) {
+            //     manifest['components/pages/home/FrameOne.vue'].prefetch = true;
+            // }
         },
     },
 });

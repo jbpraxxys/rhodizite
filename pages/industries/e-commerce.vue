@@ -8,16 +8,17 @@
 </template>
 <script setup lang="ts">
 import { useHeaderState } from '~/composables/useHeaderState';
+
+const headerState = useHeaderState();
+headerState.setCustomClass('!bg-[#04193C]');
+
 const { get } = useApi();
 const { data: cms } = await get('/page/industries-ecommerce');
 
-const headerState = useHeaderState();
-onMounted(() => {
-  headerState.setCustomClass('!bg-[#051125]');
-})
 onUnmounted(() => {
-  headerState.setCustomClass('')
-})
+    headerState.setCustomClass('');
+});
+
 
 import "swiper/css/navigation";
 import "swiper/css/free-mode";

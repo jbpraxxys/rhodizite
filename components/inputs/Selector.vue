@@ -78,7 +78,9 @@
         </div>
         <p
             v-if="error"
-            class="input-error-text"
+            class="mt-2 text-sm"
+            :class="error ? 'text-red-600' : 'text-gray-800'"
+            id="email-error"
         >
             {{ error }}
         </p>
