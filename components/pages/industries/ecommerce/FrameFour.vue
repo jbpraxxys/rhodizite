@@ -8,9 +8,9 @@
                     class="radial-card3 rounded-lg animateUp ecommerce-frame4-element generic-hover">
                     <div class="flex space-x-4 bg-[#232627] p-6 rounded-lg relative z-[10] h-full">
                         <div class="w-11 h-11 bg-primary-700 flex items-center rounded-full justify-center">
-                            <img class="w-6 h-6 group-hover/benefit:scale-125 transition"
-                                :src="$config.public.storage + service.image" alt="icon" loading="lazy"
-                                decoding="async">
+                            <nuxt-img class="w-6 h-6 group-hover/benefit:scale-125 transition"
+                                :src="$config.public.storage + service.image" alt="icon" loading="lazy" decoding="async"
+                                format="webp" quality="80" />
                         </div>
                         <div class="w-[calc(100%-60px)] text-white">
                             <p class="font-semibold text-lg mb-4">{{ service.title }}</p>

@@ -21,13 +21,15 @@
                     >
                         <div class="space-y-2.5 image-text">
                             <div class="w-24 h-24 relative">
-                                <img
+                                <nuxt-img
                                     class="w-full h-full object-contain" 
                                     :src="$config.public.storage + item.image" 
                                     alt="icon"
                                     loading="lazy"
                                     decoding="async"
-                                >
+                                    format="webp"
+                                    quality="80"
+                                />
                             </div>
                             <p class="font-semibold text-2xl">{{ item.title }}</p>
                         </div>

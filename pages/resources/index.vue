@@ -12,7 +12,7 @@
                         <div class="aspect-w-[641] aspect-h-[469] overflow-hidden rounded-md">
                             <nuxt-img class="w-full h-full object-cover"
                                 :src="$config.public.storage + item.banner_image_path" :alt="item.title" loading="lazy"
-                                decoding="async" />
+                                decoding="async" format="webp" quality="80"/>
                         </div>
                     </div>
                     <div class="space-y-4 w-full lg:w-[383px]">

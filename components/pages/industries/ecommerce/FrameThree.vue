@@ -12,8 +12,8 @@
                 <div
                     class="p-8 rounded-xl bg-[#191919]/[0.60] advantage-card text-white space-y-2.5 flex flex-col justify-end border-[3px] border-[#191919]/[0.60] hover:border-[#51D2CA]">
                     <div class="w-24 h-24 relative">
-                        <img class="w-full h-full object-contain" :src="$config.public.storage + item.image" alt="icon"
-                            loading="lazy" decoding="async">
+                        <nuxt-img class="w-full h-full object-contain" :src="$config.public.storage + item.image"
+                            alt="icon" loading="lazy" decoding="async" format="webp" quality="80" />
                     </div>
                     <p class="font-semibold text-xl text-primary-500 lg:text-2xl">{{ item.title }}</p>
                     <div class="content">

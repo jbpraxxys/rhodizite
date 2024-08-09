@@ -1,11 +1,14 @@
 <template>
     <section class="bg-primary-900">
         <div class="max-w-[1440px] m-auto px-4 pt-[100px] pb-[265px] lg:pl-32 lg:pr-20 lg:py-[100px] flex lg:flex-row flex-col items-center justify-between">
-            <img 
+            <nuxt-img  
                 class="lg:max-w-[300px] banner-image object-contain min-h-[434px]" 
                 :src="item.image" 
                 alt="banner-image"
-            >
+                format="webp" quality="80"
+                loading="eager"
+                decoding="async"
+            />
             <div class="max-w-[755px] w-full text-banner">
                 <h1 class="font-bold text-white mb-8 text-h1" v-html="item.title" />
                 <a @click.prevent="handleContactClick" href="/contact-us/#contact-form">
@@ -60,12 +63,3 @@ onUnmounted(() => {
     }
 });
 </script>
-
-<style lang="scss" scoped>
-@media screen and (max-width: 1023px) {
-    .text-banner h1 {
-            font-size: 3rem !important;
-            line-height: 3rem;
-    }
-}
-</style>

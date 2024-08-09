@@ -2,8 +2,8 @@
     <section class="bg-gradient-to-b from-[#1C2C36] to-[#304958]">
         <div class="flex items-center lg:flex-row flex-col">
             <div class="w-full lg:w-1/2 h-full bg-white">
-                <img class="w-full h-full object-cover" :src="$config.public.storage + cms?.content.section5_image"
-                    alt="ecommerce" loading="lazy" decoding="async">
+                <nuxt-img class="w-full h-full object-cover" :src="$config.public.storage + cms?.content.section5_image"
+                    alt="ecommerce" loading="lazy" decoding="async" format="webp" quality="80" />
             </div>
             <div class="w-full lg:w-1/2 text-white px-4 lg:px-20 py-16 lg:py-[100px]">
                 <p class="text-5xl leading-tight font-bold mb-6 animateUp" v-html="cms?.content.section5_header"></p>

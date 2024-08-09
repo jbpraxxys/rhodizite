@@ -1,7 +1,7 @@
 <template>
     <section class="relative">
-        <img class="absolute bottom-[1300px] lg:bottom-0 left-0 lg:scale-100 scale-[200%] -translate-x-[50%] z-1"
-            src="/icons/contact-bg.svg" alt="contact" loading="lazy" decoding="async">
+        <nuxt-img class="absolute bottom-[1300px] lg:bottom-0 left-0 lg:scale-100 scale-[200%] -translate-x-[50%] z-1"
+            src="/icons/contact-bg.svg" alt="contact" loading="lazy" decoding="async" format="webp" quality="80"/>
         <div class="max-w-[1440px] m-auto lg:py-[120px] lg:px-20 px-4 py-16 relative z-[2]">
             <div class="flex lg:flex-row flex-col lg:space-y-0 space-y-8 lg:space-x-20 max-w-[1062px] m-auto mb-24">
                 <div class="w-full lg:w-1/2 image-text">

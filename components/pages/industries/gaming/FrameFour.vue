@@ -1,5 +1,5 @@
 <template>
-   <section class="bg-[#11CEBB] relative">
+    <section class="bg-[#11CEBB] relative">
         <div
             class="max-w-[1440px] m-auto px-4 lg:px-20 py-16 lg:py-20 flex space-x-0 lg:flex-row flex-col lg:space-x-20">
             <div class="w-full lg:w-1/2 lg:order-1 order-2">
@@ -10,8 +10,9 @@
                         class="radial-card5 rounded-lg animateUp generic-hover">
                         <div class="flex space-x-4 bg-[#146a68] p-6 rounded-lg relative z-[10]">
                             <div class="w-11 h-11 bg-primary-700 flex items-center rounded-full justify-center">
-                                <img class="w-6 h-6 group-hover/benefit:scale-125 transition"
-                                    :src="$config.public.storage + expectation?.logo" alt="icon">
+                                <nuxt-img class="w-6 h-6 group-hover/benefit:scale-125 transition"
+                                    :src="$config.public.storage + expectation?.logo" alt="icon" loading="lazy"
+                                    decoding="async" format="webp" quality="80" />
                             </div>
                             <div class="w-[calc(100%-60px)] text-white">
                                 <p class="font-semibold text-lg mb-4">{{ expectation.title }}</p>
@@ -23,8 +24,8 @@
                 </div>
             </div>
             <div class="w-full lg:w-1/2 relative block order-1 lg:order-2">
-                <img class="w-full lg:sticky lg:top-20" :src="$config.public.storage + cms?.content.section4_image"
-                    alt="gaming" loading="lazy" decoding="async">
+                <nuxt-img class="w-full lg:sticky lg:top-20" :src="$config.public.storage + cms?.content.section4_image"
+                    alt="gaming" loading="lazy" decoding="async" format="webp" quality="80" />
             </div>
         </div>
     </section>

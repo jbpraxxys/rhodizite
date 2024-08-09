@@ -13,8 +13,8 @@
                     <div class="p-8 rounded-xl text-white space-y-2.5 flex flex-col bg-[#051125] z-[10] relative"
                         :class="item.customClass">
                         <div class="w-24 h-24 relative">
-                            <img class="w-full h-full object-contain" :src="$config.public.storage + item.image"
-                                alt="icon" loading="lazy" decoding="async">
+                            <nuxt-img class="w-full h-full object-contain" :src="$config.public.storage + item.image"
+                                alt="icon" loading="lazy" decoding="async" format="webp" quality="80" />
                         </div>
                         <p class="font-semibold text-xl text-[#51D2CA]">{{ item.title }}</p>
                         <div>

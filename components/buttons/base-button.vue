@@ -61,7 +61,4 @@ const props = defineProps ({
     }
 });
 </script>
-<style scoped>
-@import "~/assets/scss/components/button.scss";
-</style>
   

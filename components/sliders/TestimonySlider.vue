@@ -19,25 +19,27 @@
                        <div class="absolute top-2 left-0 bg-primary-500 w-full h-full rounded-[2rem] rotate-45"></div>
                        <div class="aspect-w-1 aspect-h-1 w-full rounded-[2rem] rotate-45 overflow-hidden relative">
                            <div class="w-[135%] h-[135%] bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45">
-                               <img 
+                               <nuxt-img  
                                    class="w-full object-cover" 
                                    :src="$config.public.storage + item.image"  
                                    alt="ceo"
                                    loading="lazy"
                                    decoding="async"
-                               >
+                                   format="webp" quality="80"
+                               />
                            </div>
                        </div>
                    </div>
                </div>
                <div class="lg:w-[calc(100%-384px)] relative">
-                   <img
+                   <nuxt-img 
                        src="/icons/quote.svg" 
                        alt="quote"
                        class="absolute -top-4 lg:-top-8 left-0 lg:-left-8"
                        loading="lazy"
                        decoding="async"
-                   >
+                       format="webp" quality="80"
+                   />
                    <p class="text-xl lg:text-2xl font-medium poppins mb-4 animateUp">{{ item?.testimonial }}</p>
                    <p class="text-sm font-bold animateUp">{{ item?.name }}</p>
                    <p class="text-sm animateUp">{{ item?.position }}</p>
@@ -50,9 +52,6 @@
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-import "swiper/css/navigation";
-import 'swiper/css';
-
 defineProps({
    items: {
        type: Object
@@ -63,15 +62,3 @@ const modules = [Autoplay, Navigation];
 
 
 </script>
-
-<style lang="scss">
-.testimony-swiper {
-    .swiper-button-prev,.swiper-button-next {
-        color: #31BEB5;
-
-        &:hover {
-            color: #22857F;
-        }
-    }
-}
-</style>

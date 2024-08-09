@@ -5,9 +5,9 @@
             :class="headerScroll ? 'py-2' : 'py-6'">
             <div class="hdr-logo lg:w-auto">
                 <NuxtLink to="/">
-                    <img :src="config.public.storage + header?.content?.section1_logo" alt="logo"
+                    <nuxt-img :src="config.public.storage + header?.content?.section1_logo" alt="logo"
                         class="lg:h-[68px] max-w-full mx-auto transition duration-700 header-logo"
-                        :class="headerScroll ? 'h-[64px]' : 'brightness-0 invert h-[61px]'" async>
+                        :class="headerScroll ? 'h-[64px]' : 'brightness-0 invert h-[61px]'" loading="eager" decoding="async" format="webp" quality="80"/>
                 </NuxtLink>
             </div>
             <div @click="toggleMenu" class="hamburger-menu pr-3" :class="menuOpen ? 'active' : ''">

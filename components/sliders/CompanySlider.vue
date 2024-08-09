@@ -26,13 +26,14 @@
                     
                 >
                     <div class="popAnimate w-fit m-auto">
-                        <img 
+                        <nuxt-img  
                             class="w-[114px] grayscale transition hover:grayscale-0 hover:scale-125 duration-500"
                             :src="$config.public.storage + i.logo" 
                             alt="logo"
                             loading="lazy"
                             decoding="async"
-                        >
+                            format="webp" quality="80"
+                        />
                     </div>
                 </a>
             </swiper-slide>
@@ -41,8 +42,6 @@
 </template>
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import "swiper/css/free-mode";
-import 'swiper/css';
 import { Autoplay, Navigation } from 'swiper/modules';
 
 defineProps({

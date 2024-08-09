@@ -9,8 +9,8 @@
         customClass: '-translate-y-[100px]'
     }" />
     <section class="relative bg-primary-50">
-        <img class="absolute top-0 left-0 w-full h-full z-1 object-cover" src="/icons/grid.png" alt="grid"
-            loading="lazy" decoding="async">
+        <nuxt-img class="absolute top-0 left-0 w-full h-full z-1 object-cover" src="/icons/grid.png" alt="grid"
+            loading="lazy" decoding="async" format="webp" quality="80"/>
         <div class="max-w-[1440px] m-auto px-4 lg:px-20 relative z-[2] py-16">
             <div class="flex lg:flex-row flex-col items-center justify-between image-text">
                 <div class="w-full lg:w-7/12 mb-8 lg:mb-0 order-2 lg:ml-20">
@@ -24,8 +24,8 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-5/12 max-w-[540px] animateUp order-1">
-                    <img class="w-full" :src="$config.public.storage + cms?.content.section2_image" alt="image" loading="lazy"
-                        decoding="async">
+                    <nuxt-img class="w-full" :src="$config.public.storage + cms?.content.section2_image" alt="image" loading="lazy"
+                        decoding="async" format="webp" quality="80"/>
                 </div>
             </div>
         </div>

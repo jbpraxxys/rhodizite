@@ -4,14 +4,14 @@
             <div class="lg:max-w-[373px]">
                 <div class="py-3 mb-2">
                     <a href="/">
-                        <img class="w-[250px] lg:w-[260px]" :src="config.public.storage + footer.content.section1_logo"
-                            alt="footer-logo" loading="lazy" decoding="async">
+                        <nuxt-img class="w-[250px] lg:w-[260px]" :src="config.public.storage + footer.content.section1_logo"
+                            alt="footer-logo" loading="lazy" decoding="async" format="webp" quality="80"/>
                     </a>
                 </div>
                 <p class="text-white leading-5 mb-8">{{ footer?.content.section1_address }}</p>
                 <div class="flex items-center space-x-6 mb-12 lg:mb-0">
-                    <img v-for="accreditation in footer?.content.section1_accreditation" class="h-[40px] lg:h-[50px] w-fit"
-                        :src="config.public.storage + accreditation.logo" alt="icon" loading="lazy" decoding="async">
+                    <nuxt-img v-for="accreditation in footer?.content.section1_accreditation" class="h-[40px] lg:h-[50px] w-fit"
+                        :src="config.public.storage + accreditation.logo" alt="icon" loading="lazy" decoding="async" format="webp" quality="80"/>
                 </div>
             </div>
             <div class="max-w-[780px] w-full grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16 text-white text-sm">
@@ -75,8 +75,8 @@
             <div class="flex items-center space-x-3.5">
                 <a v-for="social in footer?.content.section2_social_accounts" :href="social.link" target="_blank"
                     rel="noreferrer">
-                    <img class="w-5" :src="config.public.storage + social.icon" alt="icon" loading="lazy"
-                        decoding="async">
+                    <nuxt-img class="w-5" :src="config.public.storage + social.icon" alt="icon" loading="lazy"
+                        decoding="async" format="webp" quality="80"/>
                 </a>
             </div>
         </div>

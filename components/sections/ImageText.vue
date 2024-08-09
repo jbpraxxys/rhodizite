@@ -4,7 +4,7 @@
             <div class="text-5xl font-bold mb-6 title reveal-type leading-tight" v-html="item.title" />
             <div class="text-xl animateUp" v-html="item.content" />
             <div v-if="item.buttonText && item.buttonLink" class="pt-6">
-                <nuxt-link :to="item.buttonLink">
+                <nuxt-link :to="item.buttonLink" aria-label="Go to specialization">
                     <buttons-base-button custom-class="h-14 px-6 !text-base animateUp" :design-color="item.designColor">
                         {{ item.buttonText }}
                     </buttons-base-button>
@@ -17,6 +17,8 @@
                 alt="image"
                 loading="lazy"
                 decoding="async"
+                format="webp"
+                quality="80"
             />
         </div>
     </div>
@@ -30,6 +32,4 @@ defineProps({
     },
 })
 </script>
-<style lang="scss">
-@import "~/assets/scss/components/sections.scss";
-</style>
+

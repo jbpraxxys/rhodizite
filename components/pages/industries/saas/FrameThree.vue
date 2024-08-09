@@ -7,8 +7,8 @@
                 <div v-for="solution in cms?.content.section3_items"
                     class="p-8 rounded-lg bg-white/[0.03] text-white space-y-2.5 flex flex-col justify-start animateUp saas-frame3-element generic-hover">
                     <div class="w-24 h-24 relative">
-                        <img class="w-full h-full object-contain" :src="$config.public.storage + solution.logo"
-                            alt="icon" loading="lazy" decoding="async">
+                        <nuxt-img class="w-full h-full object-contain" :src="$config.public.storage + solution.logo"
+                            alt="icon" loading="lazy" decoding="async" format="webp" quality="80"/>
                     </div>
                     <p class="font-semibold text-xl lg:text-2xl">{{ solution.title }}</p>
                     <p>{{ solution.content }}</p>

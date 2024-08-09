@@ -12,8 +12,8 @@
                     <p v-if="data.article.author">Written by: {{ data.article.author }}</p>
                 </div>
                 <div class="overflow-hidden relative mb-4">
-                    <img class="w-full h-full object-cover" :src="$config.public.storage + data.article.banner_image_path"
-                        alt="banner" loading="lazy" decoding="async">
+                    <nuxt-img class="w-full h-full object-cover" :src="$config.public.storage + data.article.banner_image_path"
+                        alt="banner" loading="lazy" decoding="async" format="webp" quality="80"/>
                 </div>
                 <div class="ck-content" v-html="data.article.content"></div>
             </div>
@@ -26,7 +26,7 @@
                             <div class="aspect-w-[500] aspect-h-[307]">
                                 <nuxt-img class="w-full h-full object-cover"
                                     :src="$config.public.storage + item.banner_image_path" :alt="item.title"
-                                    loading="lazy" decoding="async" />
+                                    loading="lazy" decoding="async" format="webp" quality="80"/>
                             </div>
                             <p class="text-sm text-neutral-600">{{ formatDate(item.publish_date) }}</p>
                             <p class="line-clamp-2 font-semibold text-xl">{{ item.title }}</p>
