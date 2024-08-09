@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="lg:min-h-0 min-h-[386px] bg-primary-900 lg:block hidden">
-            <!-- <div v-if="!showBackground" class="relative lg:w-full w-[150%] right-[50%] lg:right-0 transition duration-1000">
+            <!-- <div v-if="!isMobile" class="relative lg:w-full w-[150%] right-[50%] lg:right-0 transition duration-1000">
                 <nuxt-img 
                     src="/img/home/frameone.webp"
                     alt="mockup-banner"
@@ -28,19 +28,23 @@
                     class="w-full h-full object-contain"
                 />
             </div> -->
-            <!-- <pages-home-frame-one-mock v-if="!showBackground" /> -->
-            <pages-home-frame-one-bg class="lg:w-full w-[150%] relative right-[50%] lg:right-0" />
+            <pages-home-frame-one-bg v-if="!isMobile" class="lg:w-full w-[150%] relative right-[50%] lg:right-0" />
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
-// import { useBreakpoints } from '@vueuse/core'
 defineProps({
     cms: {
         type: Object,
         required: true
     }
+})
+
+const isMobile = ref(false)
+
+onMounted(() => {
+    isMobile.value = detectMobile()
 })
 
 // const textColorClass = ref('text-white');

@@ -14,7 +14,18 @@
 
 <script setup lang="ts">
 const { get } = useApi();
+const config = useRuntimeConfig();
 const { data: homeData } = await get('/page/home');
+
+useSeoMeta({
+  title: homeData.value?.title,
+  ogTitle: homeData.value?.title,
+  description: homeData.value?.description,
+  ogDescription: homeData.value?.description,
+  keywords: homeData.value?.keywords,
+  ogImage: config.public.storage + homeData.value?.og_image_path,
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <style lang="scss">
