@@ -9,16 +9,16 @@
                 <div v-for="solution in cms?.content.section3_items"
                     class="p-8 rounded-lg bg-[#2D4959] text-white space-y-2.5 flex flex-col justify-start animateUp gaming-frame3-element generic-hover">
                     <div class="w-24 h-24 relative">
-                        <img class="w-full h-full object-contain" :src="$config.public.storage + solution?.logo"
-                            alt="icon" loading="lazy" decoding="async">
+                        <nuxt-img class="w-full h-full object-contain" :src="$config.public.storage + solution?.logo"
+                            alt="icon" loading="lazy" decoding="async" format="webp" quality="80"/>
                     </div>
                     <p class="font-semibold text-2xl">{{ solution?.title }}</p>
                     <p>{{ solution?.content }}</p>
                 </div>
             </div>
         </div>
-        <img class="absolute bottom-0 w-[900%] lg:w-full max-w-max lg:max-w-full"
-            :src="$config.public.storage + cms?.content.section3_footer" alt="footer" loading="lazy" decoding="async">
+        <nuxt-img class="absolute bottom-0 w-[900%] lg:w-full max-w-max lg:max-w-full"
+            :src="$config.public.storage + cms?.content.section3_footer" alt="footer" loading="lazy" decoding="async" format="webp" quality="80"/>
     </section>
 </template>
 <script setup lang="ts">

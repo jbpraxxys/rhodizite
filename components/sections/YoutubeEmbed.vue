@@ -14,13 +14,14 @@
                     <a 
                         :href="item.buttonLink"
                     >
-                        <img 
+                        <nuxt-img  
                             class="image image-thumb w-full h-full object-cover" 
                             :src="$config.public.storage + item.image" 
                             alt="thumbnail"
                             loading="lazy"
                             decoding="async"
-                        >
+                            format="webp" quality="80"
+                        />
                     </a>
                 </Lightgallery>
             </div>

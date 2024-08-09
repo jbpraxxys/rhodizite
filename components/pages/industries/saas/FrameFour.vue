@@ -9,8 +9,8 @@
                     class="lg:even:translate-y-3 radial-card4 rounded-lg animateUp generic-hover">
                     <div class="p-6 rounded-lg bg-[#182948] flex space-x-4 h-full relative z-[10]">
                         <div class="w-10 h-10">
-                            <img class="w-full h-full object-contain" :src="$config.public.storage + expectation.logo"
-                                alt="expectation" loading="lazy" decoding="async">
+                            <nuxt-img class="w-full h-full object-contain" :src="$config.public.storage + expectation.logo"
+                                alt="expectation" loading="lazy" decoding="async" format="webp" quality="80"/>
                         </div>
                         <div class="w-[calc(100%-56px)] text-white">
                             <p class="text-lg font-semibold mb-4">{{ expectation.title }}</p>

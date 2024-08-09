@@ -1,12 +1,13 @@
 <template>
     <div class="flex lg:flex-row flex-col items-center justify-between max-w-[1280px] m-auto lg:p-10 pb-0">
-        <img
+        <nuxt-img
             class="w-[483px]" 
             src="/icons/contact-img.svg" 
             alt="contact"
             loading="lazy"
             decoding="async"
-        >
+            format="webp" quality="80"
+        />
         <div class="max-w-[656px] p-6 lg:p-8 bg-primary-900 w-full rounded-2xl">
             <div class="text-white mb-6">
                 <p class="font-semibold text-3xl mb-3">{{title}}</p>

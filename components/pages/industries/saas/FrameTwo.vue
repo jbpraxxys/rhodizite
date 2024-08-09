@@ -5,8 +5,8 @@
             <div
                 class="max-w-[1440px] m-auto px-4 lg:px-20 flex items-center lg:space-x-20 py-16 lg:flex-row flex-col lg:py-20 w-full">
                 <div class="w-full lg:w-[540px] relative z-1">
-                    <img class="w-full" :src="$config.public.storage + cms?.content.section2_image" alt="saas" loading="lazy"
-                        decoding="async">
+                    <nuxt-img class="w-full" :src="$config.public.storage + cms?.content.section2_image" alt="saas" loading="lazy"
+                        decoding="async" format="webp" quality="80"/>
                 </div>
                 <div class="w-full lg:w-[calc(100%-620px)]">
                     <div class="text-white text-4xl lg:text-[3rem] leading-tight saas-highlight ck-editor mb-4 reveal-type"

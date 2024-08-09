@@ -19,13 +19,15 @@
                     :class="item.customClass"
                 >
                     <div class="w-24 h-24 relative">
-                        <img
+                        <nuxt-img
                             class="w-full h-full object-contain" 
                             :src="$config.public.storage + item.image" 
                             alt="icon"
                             loading="lazy"
                             decoding="async"
-                        >
+                            format="webp"
+                            quality="80"
+                        />
                     </div>
                     <p class="font-semibold text-2xl text-[#51D2CA]">{{ item.title }}</p>
                     <div>

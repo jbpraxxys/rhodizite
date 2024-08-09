@@ -31,13 +31,14 @@
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-20">
                 <div v-for="i in cms?.content.section3_items" class="text-white">
                     <div class="w-24 m-auto mb-6">
-                        <img
+                        <nuxt-img 
                             class="w-full h-full object-contain"
                             :src="$config.public.storage + i.image" 
                             alt="iso"
                             loading="lazy"
                             decoding="async"
-                        >
+                            format="webp" quality="80"
+                        />
                     </div>
                     <div class="text-center">
                         <p class="font-bold text-xl mb-2">{{i.title}}</p>
@@ -65,25 +66,27 @@
                         :href="cms?.content.section4_video_link"
                     >
                         <div class="w-full aspect-w-4 aspect-h-3 lg:aspect-w-16 lg:aspect-h-9 rounded-xl lg:rounded-lg overflow-hidden">
-                            <img 
+                            <nuxt-img  
                                 class="image image-thumb w-full h-full object-cover" 
                                 :src="$config.public.storage + cms?.content.section4_image" 
                                 alt="thumbnail"
                                 loading="lazy"
                                 decoding="async"
-                            >
+                                format="webp" quality="80"
+                            />
                         </div>
                     </a>
                 </Lightgallery>
             </div>
             <div class="relative pt-20">
-                <img 
+                <nuxt-img  
                     class="absolute bottom-[1300px] lg:bottom-0 left-0 lg:scale-100 scale-[200%] -translate-x-[50%] z-1"
                     src="/icons/contact-bg.svg" 
                     alt="contact"
                     loading="lazy"
                     decoding="async"
-                >
+                    format="webp" quality="80"
+                />
                 <div id="career-form" class="spacer -translate-y-20"></div>
                 <sections-career-form 
                     :position="position" 

@@ -69,6 +69,7 @@
                     py-2.5
                     h-11
                     px-4
+                    border
                 "
                 :class="
                     error

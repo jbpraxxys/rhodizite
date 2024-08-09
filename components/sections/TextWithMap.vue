@@ -6,21 +6,23 @@
                 <div class="text-xl animateUp" v-html="item.content" />
             </div>
             <div class="w-full lg:w-[540px]">
-                <img 
+                <nuxt-img  
                     class="w-full banner-image" 
                     :src="$config.public.storage + item.image" 
                     alt="map"
                     loading="lazy"
                     decoding="async"
-                >
+                    format="webp" quality="80"
+                />
             </div>
-            <img 
+            <nuxt-img  
                 class="absolute lg:bottom-auto bottom-0 lg:scale-100 scale-[150%] lg:top-1/2 right-0 lg:-translate-y-1/2 translate-x-1/2"
                 src="/icons/ph-design.svg" 
                 alt="design"
                 loading="lazy"
                 decoding="async"
-            >
+                format="webp" quality="80"
+            />
         </div>
     </section>
 </template>

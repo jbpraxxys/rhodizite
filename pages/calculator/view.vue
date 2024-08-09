@@ -229,6 +229,7 @@
                         id="pdf"
                         label="Your Resume"
                         description="Only .PDF or .DOCX file will be accepted."
+                        custom-input-class="border"
                         v-model:path="form.pdf"
                         v-model:file="form.pdf"
                         :error="form.errors.pdf"
@@ -257,17 +258,36 @@
                         Cancel
                     </buttons-base-button>
 
+                    <!-- <buttons-base-button 
+                        size="md"
+                        designColor="text-white"
+                        custom-class="px-6 !text-base" 
+                        @click="validateAndSubmit"
+                        :disabled="!form.recaptcha_response"
+                    >
+                        Submit
+                    </buttons-base-button> -->
                     <buttons-base-button 
                         size="md"
                         designColor="text-white"
                         custom-class="px-6 !text-base" 
-                        @click="submit"
-                        :disabled="!form.recaptcha_response"
+                        @click="validateAndSubmit"
                     >
                         Submit
                     </buttons-base-button>
                 </div>
             </form>
+        </template>
+    </modals-dialog-modal>
+
+    <modals-dialog-modal :show="isSubmitting" @close="isSubmitting = false" maxWidth="sm">
+        <template #content>
+            <div class="flex flex-col items-center text-center space-y-3 mb-6">
+                <div class="w-[48px] h-[48px] flex justify-center items-center bg-primary-600 bg-opacity-10 rounded-full">
+                    <EnvelopeIcon class="h-5 w-5 stroke-1 stroke-primary-600 text-primary-600 " aria-hidden="true" />
+                </div>
+                <p class="text-xl font-bold text-primary-600">Submitting ...</p>
+            </div>
         </template>
     </modals-dialog-modal>
 
@@ -292,7 +312,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, reactive, defineAsyncComponent } from "vue";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
+import { EnvelopeIcon } from "@heroicons/vue/24/outline";
 import pdfMake from 'pdfmake/build/pdfmake';
+
+const api = useApi();
 
 const form = reactive({
   email: null,
@@ -494,10 +517,51 @@ const reload = () => {
     location.reload();
 }
 
+const errors = ref({});
+const isSubmitting = ref(false);
+
+const validateForm = () => {
+    const newErrors = {};
+
+    if (!form.email) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = "Email is invalid";
+    if (!form.pdf) newErrors.pdf = "PDF is required";
+
+    return newErrors;
+};
+
+const validateAndSubmit = async () => {
+    const newErrors = validateForm();
+
+    if (Object.keys(newErrors).length > 0) {
+        form.errors = newErrors;
+        return;
+    }
+
+    await submit();
+};
+
 const submit = async () => {
+    if (isSubmitting.value) return;
+    showDialogModal.value = false;
+    isSubmitting.value = true;
+
+    const formData = new FormData();
+    Object.keys(form).forEach(key => {
+        if (key === 'pdf' && form[key] instanceof File) {
+            formData.append(key, form[key], form[key].name);
+        } else if (form[key] !== null && key !== 'errors') {
+            formData.append(key, form[key]);
+        }
+    });
+
     try {
-        const response = await post('/api/submit-computation', form);
-        showDialogModal.value = false;
+        const response = await api.post('/computation', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        isSubmitting.value = false;
         showSuccessModal.value = true;
         Object.assign(form, {
             email: null,
@@ -506,11 +570,10 @@ const submit = async () => {
             errors: {},
         });
     } catch (error) {
-        // Handle errors, maybe set form.errors based on the error response
         console.error('Submission error:', error);
+        isSubmitting.value = false;
     }
 };
-
 const sitekey = "6Leg04gpAAAAAJvzhxc0KaQU-KvKrnWFWx3u9Gi7";
 
 onMounted(() => {

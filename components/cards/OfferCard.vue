@@ -8,13 +8,15 @@
                 <p class="mb-2 font-bold text-lg">{{ item.title }}</p>
                 <div v-html="item.content" />
             </div>
-            <img 
+            <nuxt-img 
                 class="w-[152px] absolute bottom-0 right-0 transition duration-500 group-hover/offer:scale-110" 
                 :src="$config.public.storage + item.image" 
                 alt="icon"
                 loading="lazy"
                 decoding="async"
-            >
+                format="webp"
+                quality="80"
+            />
         </div>
     </div>
 </template>

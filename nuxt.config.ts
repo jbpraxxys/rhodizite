@@ -6,10 +6,10 @@ export default defineNuxtConfig({
             apiBaseUrl: process.env.API_BASE_URL,
             storage: process.env.STORAGE_BASE_URL,
             siteKey: process.env.RECAPTCHA_SITE_KEY,
-        }
+        },
     },
-    devtools: { enabled: true },
-    css: ['~/assets/main.css'],
+    devtools: { enabled: false },
+    css: ["~/assets/main.css"],
     postcss: {
         plugins: {
             tailwindcss: {},
@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     googleFonts: {
         // declare your google fonts here
         families: {
-            Poppins: [200, 400, 600, 700, 900],
+            Poppins: [400, 600, 700],
             "Alfa Slab One": [400],
             Gabarito: [900],
             Righteous: [400],
@@ -59,19 +59,6 @@ export default defineNuxtConfig({
         enabled: false,
     },
     hooks: {
-        'webpack:config': (configs) => {
-            configs.forEach((config) => {
-                if (config.name === 'client') {
-                    config.plugins = config.plugins || [];
-                    // config.plugins.push(
-                    //     new (require('webpack').PrefetchPlugin)({
-                    //         context: __dirname,
-                    //         request: './components/pages/home/FrameOne.vue'
-                    //     }),
-                    // );
-                }
-            });
-        },
         "build:manifest": (manifest) => {
             // Iterate over all entries in the manifest
             for (const [key, entry] of Object.entries(manifest)) {
@@ -81,10 +68,6 @@ export default defineNuxtConfig({
                     entry.preload = false;
                 }
             }
-            // Add FrameOne.vue to prefetch
-            // if (manifest['components/pages/home/FrameOne.vue']) {
-            //     manifest['components/pages/home/FrameOne.vue'].prefetch = true;
-            // }
         },
     },
 });

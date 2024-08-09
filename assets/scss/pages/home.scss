@@ -1,3 +1,13 @@
+.testimony-swiper {
+    .swiper-button-prev,.swiper-button-next {
+        color: #31BEB5;
+
+        &:hover {
+            color: #22857F;
+        }
+    }
+}
+
 .ck-content.text-highlight {
     strong,
     b {

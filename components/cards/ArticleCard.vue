@@ -10,6 +10,8 @@
                             :alt="item.title"
                             loading="lazy"
                             decoding="async"
+                            format="webp"
+                            quality="80"
                         />
                     </div>
                 </div>

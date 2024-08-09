@@ -27,7 +27,7 @@ function fireTrigger() {
 }
 
 onMounted(() => {
-    const delay = detectMobile() ? 1000 : 2500
+    const delay = detectMobile() ? 5000 : 2500
 
     const loadScripts = async () => {
         setTimeout(fireTrigger, delay)

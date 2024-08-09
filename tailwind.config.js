@@ -13,6 +13,9 @@ export default {
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
+            fontDisplay: {
+                sans: 'swap',
+            },
             colors: {
                 'primary': {
                     50:'#EDEFEF',

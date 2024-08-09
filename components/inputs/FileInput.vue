@@ -25,11 +25,12 @@
                 </p>
             </div>
             <div class="relative text-primary-500 font-medium cursor-pointer">
-                <img 
+                <nuxt-img 
                     class="h-11" 
                     src="/icons/export.svg" 
                     alt="button"
-                >
+                    format="webp" quality="80"
+                />
                 <p class="absolute top-1/2 w-full text-center -translate-y-1/2 text-sm">Choose File</p>
             </div>
         </div>

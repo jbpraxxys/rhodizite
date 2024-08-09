@@ -9,6 +9,8 @@
                 decoding="async"
                 width="96"
                 height="96"
+                format="webp"
+                quality="80"
             />
         </div>
         <p class="font-bold text-xl mb-2">{{ item.title }}</p>

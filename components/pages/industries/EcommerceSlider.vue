@@ -9,13 +9,15 @@
         >
             <swiper-slide v-for="item in items" class="lg:!w-fit">
                 <div class="w-full lg:w-auto pt-[70%] lg:pt-0 lg:rounded-0 rounded-xl overflow-hidden relative">
-                    <img 
+                    <nuxt-img 
                         class="w-full h-full object-cover lg:object-none lg:w-auto lg:h-full lg:relative absolute lg:top-auto lg:left-auto top-0 left-0"
                         :src="$config.public.storage + item.image" 
                         alt="ecommerce"
                         loading="lazy"
                         decoding="async"
-                    >
+                        format="webp"
+                        quality="80"
+                    />
                 </div>
             </swiper-slide>
             <swiper-slide class="lg:!w-[400px]"/>
