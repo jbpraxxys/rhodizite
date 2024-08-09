@@ -71,8 +71,19 @@
 </template>
 <script setup lang="ts">
 const { get } = useApi();
+const config = useRuntimeConfig();
 const { data: cms } = await get('/page/resources');
 const { data: articles } = await get('/articles');
+
+useSeoMeta({
+    title: cms.value?.title,
+    ogTitle: cms.value?.title,
+    description: cms.value?.description,
+    ogDescription: cms.value?.description,
+    keywords: cms.value?.keywords,
+    ogImage: config.public.storage + cms.value?.keywords,
+    twitterCard: 'summary_large_image',
+})
 
 const articleType = ref('case-studies');
 

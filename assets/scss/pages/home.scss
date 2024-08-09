@@ -21,6 +21,14 @@
     animation: itemFloat 3s alternate infinite;
 }
 
+.image-text {
+    .title {
+        strong, b {
+            color: #22857F;
+        }
+    }
+}
+
 .reveal-type {
     .word {
         font-weight: 700;

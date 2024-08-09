@@ -1,5 +1,4 @@
 <template>
-    <div class="spacer h-[100px]"></div>
     <sections-general-banner 
         :item="{
             image: $config.public.storage + item?.image,
