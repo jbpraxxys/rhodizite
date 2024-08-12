@@ -36,15 +36,12 @@
                 </div>
 
                 <div class="col-span-full">
-                    <!-- <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
-                        ref="grecaptcha"></vue-recaptcha> -->
+                    <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
+                        ref="grecaptcha"></vue-recaptcha>
                 </div>
 
                 <div class="col-span-full">
-                    <!-- <buttons-base-button size="md" @click="submit" :disabled="!form.recaptcha_response">
-                        Submit Application
-                    </buttons-base-button> -->
-                    <buttons-base-button size="md" @click="validateAndSubmit">
+                    <buttons-base-button size="md" @click="validateAndSubmit" :disabled="!form.recaptcha_response">
                         Submit Application
                     </buttons-base-button>
                 </div>
@@ -75,7 +72,11 @@
 <script lang="ts" setup>
 import { onMounted, ref, reactive, watch } from "vue";
 import { EnvelopeIcon } from "@heroicons/vue/24/outline";
-// import VueRecaptcha from 'vue-recaptcha';
+const VueRecaptcha = defineAsyncComponent({
+  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
+  loadingComponent: () => '<div>Loading...</div>',
+  delay: 4000
+});
 
 const api = useApi();
 

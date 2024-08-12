@@ -31,15 +31,16 @@
                 </div>
                 <div class="col-span-full flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between pt-2">
                     <div>
-                        <!-- <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
-                            ref="grecaptcha"></vue-recaptcha> -->
+                        <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
+                            ref="grecaptcha"></vue-recaptcha>
                     </div>
                     <div>
-                        <!-- <buttons-base-button custom-class="h-12 px-6 !text-base" @click="submit"
-                            :disabled="!form.recaptcha_response">
-                            Submit
-                        </buttons-base-button> -->
-                        <buttons-base-button custom-class="h-12 px-6 !text-base" @click.prevent="submit"  type="button">
+                        <buttons-base-button 
+                            custom-class="h-12 px-6 !text-base" 
+                            @click="submit" 
+                            type="button"
+                            :disabled="!form.recaptcha_response"
+                        >
                             Submit
                         </buttons-base-button>
                     </div>
@@ -68,6 +69,11 @@
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from "vue";
+const VueRecaptcha = defineAsyncComponent({
+  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
+  loadingComponent: () => '<div>Loading...</div>',
+  delay: 4000
+});
 
 const api = useApi();
 
@@ -77,7 +83,7 @@ const form = reactive({
     email: '',
     company: '',
     message: '',
-    recaptcha_response: null,
+    recaptcha_response: false,
 });
 
 const errors = ref<Record<string, string>>({});
@@ -89,7 +95,7 @@ const verifySubmission = () => {
 };
 
 const expiredRecaptcha = () => {
-    form.recaptcha_response = null;
+    form.recaptcha_response = false;
 };
 
 const showSuccessModal = ref(false);

@@ -50,6 +50,17 @@ const props = defineProps({
     }
 });
 
+const config = useRuntimeConfig();
+useSeoMeta({
+  title: cms.value?.title,
+  ogTitle: cms.value?.title,
+  description: cms.value?.description,
+  ogDescription: cms.value?.description,
+  keywords: cms.value?.keywords,
+  ogImage: config.public.storage + cms.value?.og_image_path,
+  twitterCard: 'summary_large_image',
+})
+
 const showCalculatorModal = ref(false);
 
 onMounted(()=> {

@@ -109,8 +109,21 @@ import 'lightgallery/css/lg-thumbnail.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-video.css';
 
+
 const { get } = useApi();
 const { data: cms } = await get('/page/careers');
+
+const config = useRuntimeConfig();
+useSeoMeta({
+  title: cms.value?.title,
+  ogTitle: cms.value?.title,
+  description: cms.value?.description,
+  ogDescription: cms.value?.description,
+  keywords: cms.value?.keywords,
+  ogImage: config.public.storage + cms.value?.og_image_path,
+  twitterCard: 'summary_large_image',
+})
+
 
 const position = ref('');
 
