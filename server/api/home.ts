@@ -1,200 +1,228 @@
 // /server/api/home.ts
 export default defineEventHandler(() => {
-  return {
-    slides: [
-      {
-        title: "Discover the Future of Technology",
+    return {
+        id: 1,
+        slug: "home",
+        label: "Home Page",
+        show_metadata: 1,
+        content: {
+            section1_title:
+                "<h1>Free your mind to <strong>focus</strong> on your core business</h1>",
+            section1_content:
+                "Let us guide you towards your goals and help you soar to new heights of success.",
+            section1_btn_link: null,
+            section1_btn_text: null,
+            section2_title:
+                "Business Process Outsourcing Solutions made for your Business",
+            section2_items: [
+                {
+                    title: "Contact Center",
+                    content:
+                        "Revolutionize your customer service operations with our customized solutions to meet your business and customers\u2019 needs.",
+                    image: "cms_images/6k1u7PMptkBNAA82pD4mbjxWPWEVMPtMpiUYBLhT.png",
+                    link: "/pages/solutions/contact-center",
+                },
+                {
+                    title: "Managed Services",
+                    content:
+                        "Easily access specialized professionals you need and avoid the costs of hiring new employees.",
+                    image: "cms_images/VvVL8UI35Djg2N8V4aRIA9QcxFKpocE31QaOom3Z.png",
+                    link: "/pages/solutions/managed-services",
+                },
+                {
+                    title: "Staff Leasing",
+                    content:
+                        "Access a pool of external talent and resources. We\u2019ll delegate administrative tasks from hiring, payroll, and benefits.",
+                    image: "cms_images/c4ts70Omkqof4VdwALtVFVuPZRSD2CAZqFdMLFJ1.png",
+                    link: "/pages/solutions/staff-leasing",
+                },
+                {
+                    title: "Workforce Management",
+                    content:
+                        "Optimize staffing and workload requirements and the scheduling processes needed to meet your business goals.",
+                    image: "cms_images/BhKnC3vm7hce9B2ENHvVoCewo9x0Lkb6YcLK4QBO.png",
+                    link: "/pages/solutions/workforce-management",
+                },
+            ],
+            section3_title: "Client-centric Custom Solutions",
+            section3_content:
+                "Reliasourcing is your strategic partner for business success. Located in the Philippines' bustling business district, we\u2019re ready to help you elevate your business to new heights.",
+            section3_items: [
+                {
+                    image: "cms_images/VjzpJyDlFVeDQHVLoi7iIJNKQWNekDTppSE2GHbj.png",
+                    title: "Flexible Solutions",
+                    content:
+                        "We create custom-built solutions that guarantee the best  resource utilization based on your needs",
+                },
+                {
+                    image: "cms_images/L8sE8pXc5RQpwKEiyz71p8UgO6bcCzcBWmkxpZRI.png",
+                    title: "Performance Oriented",
+                    content:
+                        "Our agents are trained to provide the best quality customer service for your brand",
+                },
+                {
+                    image: "cms_images/7Q1VJFDSWf6XYp0ueH0tQy9cYcyHzozCBaZ1YywB.png",
+                    title: "Tech-Driven",
+                    content:
+                        "We commit ourselves to the highest SLA industry standards",
+                },
+                {
+                    image: "cms_images/3drRLDWHKa2rRN09go5y465z5qL4UJ4uup3GG4cd.png",
+                    title: "Responsive Team",
+                    content:
+                        "We analyze performance and provide improvement suggestions",
+                },
+            ],
+            section4_items: [
+                {
+                    image: "cms_images/hlIjDTtYwS0xhZ5Sjcpv0J6W8JS3lSLEDs3VHqfs.png",
+                    title: "<p><strong>Tailor-Made Outsourcing</strong></p><p>Solutions Crafted for Your Business<strong>&nbsp;</strong>Needs</p>",
+                    content:
+                        "<blockquote><p>At Reliasourcing, we specialize in creating tailored strategies that align with your unique goals and challenges.&nbsp;</p></blockquote><p>&nbsp;</p><p>Our team of experts collaborates closely with you to understand your objectives and challenges, ensuring that our services align perfectly with your vision. Leverage our expertise in customer service, sales support, and more, delivered by a dedicated team committed to your success. Elevate your efficiency and focus on core competencies while we handle the rest.</p>",
+                    btn_link: "/pages/specialization/creative-services",
+                    btn_text: "Learn More",
+                },
+                {
+                    image: "cms_images/Eu5UHKa4epYZMSJ254rn2UkcXvNWOSxWS1kdICHy.png",
+                    title: "<p>Elevate Your Business with Dedicated <strong>Customer Success Teams</strong></p>",
+                    content:
+                        "<p>Maximize your business potential with Reliasourcing's customer success teams.</p><p>&nbsp;</p><p>We recognize the pivotal role of exceptional customer experiences in fueling growth, and our committed teams are dedicated to delivering just that. Whether you require 24/7 support, multilingual aid, or industry-specific insights, our customized solutions are crafted to surpass your expectations. Leveraging our extensive expertise in customer relationship management, we optimize operations, enhance retention rates, and cultivate enduring customer loyalty. Take your business to new heights today by partnering with Reliasourcing.</p>",
+                    btn_link:
+                        "/pages/specialization/sales-and-customer-support/customer-success-services",
+                    btn_text: "Learn More",
+                },
+                {
+                    image: "cms_images/U81hsF5N0a2MBtvOvgapTQ75pZFCvnlXz2zYUfZv.png",
+                    title: "<p>Drive Results with&nbsp; a High-Performance <strong>Sales Teams</strong></p>",
+                    content:
+                        "<p>Our collaborative, dynamic, and skilled professionals bring extensive expertise to boost your sales success. We prioritize surpassing targets and nurturing client relationships, as our team ensures a streamlined journey from prospecting to deal closure.&nbsp;</p><p>&nbsp;</p><p>Experience exceptional sales performance through effective collaboration and strategic planning to reach your goals. Elevate your business with a sales team dedicated to delivering outstanding results.&nbsp;</p>",
+                    btn_link:
+                        "/pages/specialization/sales-and-customer-support/sales-development-services",
+                    btn_text: "Learn More",
+                },
+            ],
+            section5_title:
+                "<p><strong>Reliable</strong> Solutions.<br><strong>Real</strong> Results.</p>",
+            section5_items: [
+                {
+                    prefix: "$",
+                    count: "100",
+                    suffix: "M+",
+                    content: "Generated Revenue for Clients",
+                },
+                {
+                    prefix: null,
+                    count: "1",
+                    suffix: "M+",
+                    content: "Tickets Resolved Annually",
+                },
+                {
+                    prefix: null,
+                    count: "71",
+                    suffix: "%",
+                    content: "Faster Time-to-Hire (vs. Industry Standard)",
+                },
+                {
+                    prefix: null,
+                    count: "500",
+                    suffix: "+",
+                    content: "Full-time Employees",
+                },
+            ],
+            section5_testimonials: [
+                {
+                    image: "cms_images/Vt7bGrnOud0PsU6cg5I4AAyyGxUhxwjeVSxYkbsA.png",
+                    name: "Edoardo Arnello",
+                    position: "CEO, Accesiway",
+                    testimonial:
+                        "Reliasourcing\u2019s revenue optimization services are exceptional. Their team developed a customized strategy tailored to our goals, resulting in a significant increase in revenue. Regular updates and reports kept us informed and their expertise and commitment to quality make them a valuable partner. Highly recommended!",
+                },
+                {
+                    image: "cms_images/Yp980qDl5xtxLmXj26hMdnpKO6JmtT48dm5YSUuS.webp",
+                    name: "Dor Isseroff",
+                    position: "COO, Tango",
+                    testimonial:
+                        "In my role as COO at Tango, I've been thoroughly impressed with Reliasourcing's customer support. Their focus on delivering exceptional service and tailoring strategies to our needs has transformed our support operations. We've seen a dramatic increase in customer satisfaction and a much more efficient system, thanks to their expertise. Reliasourcing keeps us informed every step of the way with clear communication and consistent updates. Their commitment to top-notch quality makes them an essential partner for any business seeking best-in-class customer support solutions.",
+                },
+                {
+                    image: "cms_images/3VqvkI5Na12UMx5S84SBhYA25GFcfpuwvz9tiOsh.webp",
+                    name: "Shea Shepard",
+                    position:
+                        "Senior Director of Global Talent Acquisition, ThriveDX",
+                    testimonial:
+                        "Partnering with Reliasourcing has been a game-changer for ThriveDX. Their commitment to excellence and deep understanding of our needs have significantly enhanced our talent acquisition process. The team at Reliasourcing is not only professional and reliable but also proactive in finding innovative solutions to complex challenges. Their dedication to delivering top-notch service has consistently exceeded our expectations. We are thrilled with the results and look forward to continuing our successful collaboration with Reliasourcing.",
+                },
+            ],
+            section6_title: "Trusted by Companies Worldwide",
+            section6_items: [
+                {
+                    link: "https://thrivedx.com/",
+                    logo: "cms_images/1ATYxxYxnKQeUj3FSXi9FIFz7Ln0A7DwRP0xfNtF.png",
+                },
+                {
+                    link: "https://www.tango.me/",
+                    logo: "cms_images/AjOmISeomMb8ivozLUOWcSCYGBKXuF7eG7KdaQLN.png",
+                },
+                {
+                    link: "https://www.accessiway.com/",
+                    logo: "cms_images/784UXnvMVAu9n4t9KhR1jjPDsj0yEoRAKyobwDPx.png",
+                },
+                {
+                    link: "https://www.playtech.com/",
+                    logo: "cms_images/UcCSTyN4TYUrfLBCByRE1tLGGxo5tRY8CrXii1hT.png",
+                },
+                {
+                    link: "https://connecteam.com/",
+                    logo: "cms_images/CGeMg6LZVctUepftOJeGXlxnbuJdIfHqh8YRHpOk.png",
+                },
+                {
+                    link: "https://creditsense.ai/",
+                    logo: "cms_images/VdbGIQwmjdMimSrMI9Mc3KYSAmT5sys0TqtsEQzb.png",
+                },
+            ],
+            section7_title: "Collaborate With Us",
+            section7_content:
+                "Reliasourcing goes above and beyond merely catering to your unique requirements. With our stellar specializations, we will help you move your business forward strategically and efficiently.",
+            section7_btn_link: "/#contact-us",
+            section7_btn_text: "Outsource with Us",
+            section8_title:
+                "<p>The Reliasourcing<br>Framework for <strong>Success</strong></p>",
+            section8_content:
+                "<p>Designed to meet the dynamic needs of our clients and drive sustainable business growth.</p><p><br>Our approach encompasses four key stages, each meticulously crafted to deliver solutions and foster long-term success.</p>",
+            section8_btn_link: "/pages/about-us/our-advantages",
+            section8_btn_text: "About Us",
+            section8_items: [
+                {
+                    title: "Client Needs Assessment",
+                    content:
+                        "Before jumpstarting the partnership, we make sure that we have a comprehensive understanding of the unique needs of each client. This involves collaborative discussions, assessment of existing processes, and identification of pain points.",
+                },
+                {
+                    title: "Customized Solutions",
+                    content:
+                        "Our team provides a detailed proposal outlining the scope of services, technology integration, and a transparent pricing model to ensure alignment with the client\u2019s long-term goals.",
+                },
+                {
+                    title: "Strategic Long-Term Planning",
+                    content:
+                        "As we consistently improve our project satisfaction and adapt to the evolving industry trends, we engage in collaborative long-term planning with our clients. We provide continuous improvements and make proactive adjustments based on your business needs.",
+                },
+                {
+                    title: "Monitoring & Optimization",
+                    content:
+                        "We implement regular performance reporting to ensure continuous improvement. Our experts analyze data, measure key performance indicators (KPIs), and deliver transparent reports to clients.",
+                },
+            ],
+        },
+        title: "Reliasourcing - Home",
         description:
-          "Explore cutting-edge innovations and stay ahead of the curve.",
-        ctaText: "Learn More",
-        ctaLink: "/future-tech",
-        image: "/img/home/home-sample-slider.jpg",
-        imageAlt: "Futuristic technology concept",
-        // backgroundImage: "/img/home/slider-bg-1.jpg",
-      },
-      {
-        title: "Transform Your Digital Experience",
-        description: "Unlock new possibilities with our advanced solutions.",
-        ctaText: "Get Started",
-        ctaLink: "/solutions",
-        image:
-          "https://images.unsplash.com/photo-1531493731235-b5c309dca387?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        imageAlt: "Digital transformation visualization",
-        // backgroundImage: "/img/home/slider-bg-2.jpg",
-      },
-      // Add more slides as needed
-    ],
-    videoURL: "/video/home-video.mp4",
-    platinumClubLogo: "/img/home/platinum-club-logo.png",
-    platinumPartnerLogos: [
-      {
-        src: "/img/home/platinum-partner-logos/accenture.jpg",
-        alt: "Accenture",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/carelon_global_solutions.png",
-        alt: "Carelon Global Solutions",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/dxc_technology.png",
-        alt: "DXC Technology",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/ernst_young.png",
-        alt: "Ernst & Young",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/genpact_services.jpg",
-        alt: "Genpact Services",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/globe_telecom.jpg",
-        alt: "Globe Telecom",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/ibm_business_services.jpg",
-        alt: "IBM Business Services",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/leechiu_property_consultants.jpg",
-        alt: "Leechiu Property Consultants",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/mdi_novare.png",
-        alt: "MDI Novare",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/ncc_group.png",
-        alt: "NCC Group",
-      },
-      { src: "/img/home/platinum-partner-logos/optum_logo.png", alt: "Optum" },
-      { src: "/img/home/platinum-partner-logos/pldt.jpg", alt: "PLDT" },
-      { src: "/img/home/platinum-partner-logos/prohance.png", alt: "Prohance" },
-      { src: "/img/home/platinum-partner-logos/pwc.png", alt: "PwC" },
-      {
-        src: "/img/home/platinum-partner-logos/rgs_global_solutions.jpg",
-        alt: "RGS Global Solutions",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/superfocus.png",
-        alt: "Superfocus",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/teleperformance.png",
-        alt: "Teleperformance",
-      },
-      {
-        src: "/img/home/platinum-partner-logos/trends_and_concepts.png",
-        alt: "Trends and Concepts",
-      },
-      { src: "/img/home/platinum-partner-logos/ttec.png", alt: "TTEC" },
-    ],
-    secondarySlides: [
-      {
-        title: "PHILIPPINES BEST WORKPLACE IN IT-BPM",
-        description:
-          "We’re Best Place to Work Certified Again! 100% of IBPAP employees that they take immense pride in working at IBPAP.",
-        ctaText: "Member Login",
-        ctaLink: "/login",
-        image: "/img/home/secondary-sample-image.jpg",
-        imageAlt: "Best place to work at!",
-        // backgroundImage: "/img/home/secondary-slider-bg-1.jpg",
-      },
-      {
-        title: "Partner for Success",
-        description: "Join our network of industry-leading partners.",
-        ctaText: "Become a Partner",
-        ctaLink: "/partners",
-        image: "/img/home/secondary-slider-2.jpg",
-        imageAlt: "Business partnership concept",
-        // backgroundImage: "/img/home/secondary-slider-bg-2.jpg",
-      },
-      // Add more slides as needed
-    ],
-    initiatives: {
-      title:
-        "Since 2004, IBPAP has led the Philippine IT-BPM Industry's growth through multiple initiatives.",
-      description:
-        "A comprehensive and definitive portal that assesses cities according to their viability as the next growth centers. The digitalcitiesPH portal features the profiles of cities and municipalities in the Philippines.",
-      ctaText: "MORE ABOUT US",
-      ctaLink: "/about-us",
-      items: [
-        {
-          title: "Policy Shaping",
-          description:
-            "The IT and Business Process Association of the Philippines is the primary industry association and advocacy group of the country's agile, dynamic, and resilient IT and Business Process Management (IT-BPM) sector.",
-        },
-        {
-          title: "Talent Development",
-          description:
-            "Enable the industry to pivot to high-value services by attracting, engaging and retaining skilled and qualified workforce that advocate for lifelong learning.",
-        },
-        {
-          title: "Country Branding",
-          description:
-            "A comprehensive and definitive portal that assesses cities according to their viability as the next growth centers. The digitalcitiesPH portal features the profiles of cities and municipalities in the Philippines.",
-        },
-        {
-          title: "Innovation",
-          description:
-            "Be at the forefront of digital transformation leading the industry in adapting to emerging technologies and in developing cutting-edge innovations.",
-        },
-      ],
-    },
-    benefits: {
-      heading: "Benefits of becoming an IBPAP Member",
-      items: [
-        {
-          title: "Industry Reports",
-          description:
-            "Gain a competitive edge with in-depth industry insights, comprehensive research, and reliable data. Empower your business strategy with the knowledge you need to succeed.",
-          icon: "/img/home/benefits/graph-icon.svg",
-          image:
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-        },
-        {
-          title: "Empower Industry Workforce",
-          description:
-            "Gain a competitive edge with in-depth industry insights, comprehensive research, and reliable data.  Empower your business strategy with the knowledge you need to succeed.",
-          icon: "/img/home/benefits/users-icon.svg",
-          image:
-            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        },
-        {
-          title: "Network Connections",
-          description:
-            "Network and collaborate with diverse professionals within and outside your industry. Build valuable relationships that foster knowledge sharing, open new opportunities, and drive innovation.",
-          icon: "/img/home/benefits/network-icon.svg",
-          image:
-            "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1484&q=80",
-        },
-        {
-          title: "Policy Advocacy",
-          description:
-            "Support the industry by actively shaping laws and policies that create a favorable business environment. Strengthen the industry's relevance in the global IT-BPM space through strategic advocacy and collaboration with policymakers.",
-          icon: "/img/home/benefits/building-icon.svg",
-          image:
-            "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        },
-      ],
-    },
-    testimonial: {
-      imageSrc: "/img/home/jack-madrid.png",
-      name: "Jak Madrid",
-      position: "President and CEO",
-      quote:
-        "IBPAP's expertise and industry insights have been crucial to our growth in the Philippines. They are a true asset to the IT-BPM sector.",
-    },
-    statistics: {
-      title:
-        "The organization has over 300 members from IT-BPM and allied industries who are all committed to contribute to the growth of the Philippine economy and create jobs for millions of Filipinos",
-      stats: [
-        { label: "MEMBERS", value: "300" },
-        { label: "BILLION INDUSTRY", value: "$59" },
-        { label: "MILLION JOBS", value: "2.5" },
-      ],
-      ctaText: "JOIN US NOW!",
-      ctaLink: "/join",
-    },
-  };
+            "Reliasourcing is your strategic partner for business success. Located in the Philippines' bustling business district, we\u2019re ready to help you elevate your business to new heights.",
+        keywords: "Reliasourcing",
+        robots_follow: "1",
+        robots_index: "1",
+        og_image_path:
+            "cms_images/D3rFMnHVIhYeXQqq2qOsXfUKts0RHlu3Akcd5p9D.png",
+        created_at: "Mar 19, 2024 (00:07:14)",
+        updated_at: "Jul 03, 2024 (03:14:52)",
+    };
 });

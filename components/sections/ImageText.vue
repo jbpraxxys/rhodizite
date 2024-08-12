@@ -4,11 +4,9 @@
             <div class="text-5xl font-bold mb-6 title reveal-type leading-tight" v-html="item.title" />
             <div class="text-xl animateUp" v-html="item.content" />
             <div v-if="item.buttonText && item.buttonLink" class="pt-6">
-                <nuxt-link :to="item.buttonLink" aria-label="Go to specialization">
-                    <buttons-base-button custom-class="h-14 px-6 !text-base animateUp" :design-color="item.designColor">
-                        {{ item.buttonText }}
-                    </buttons-base-button>
-                </nuxt-link>
+                <buttons-base-button @click="redirect(item.buttonLink)" custom-class="h-14 px-6 !text-base animateUp" :design-color="item.designColor">
+                    {{ item.buttonText }}
+                </buttons-base-button>
             </div>
         </div>
         <div class="w-full lg:w-5/12 max-w-[540px] animateUp" :class="item.imageFirst ? 'lg:order-1' : ''">
@@ -31,5 +29,9 @@ defineProps({
         default: () => ({})
     },
 })
+
+const redirect = (link: string) => {
+    navigateTo(link);
+}
 </script>
 

@@ -4,7 +4,7 @@
         <main class="overflow-x-hidden">
             <NuxtPage />
         </main>
-        <Footer />
+        <LazyFooter />
         <LazyDefer v-if="loadDeferred" />
     </NuxtLazyHydrate>
     <div></div>
