@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "analyze": "nuxt build --analyze",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -28,6 +29,8 @@
     "split-type": "^0.3.4",
     "swiper": "^11.1.9",
     "vue": "latest",
+    "@pinia/nuxt": "^0.5.1",
+    "pinia": "^2.1.7",
     "vue-recaptcha": "^3.0.0-alpha.6",
     "vue3-dropzone": "^2.2.1"
   },

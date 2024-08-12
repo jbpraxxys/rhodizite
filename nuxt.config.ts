@@ -8,6 +8,19 @@ export default defineNuxtConfig({
             siteKey: process.env.RECAPTCHA_SITE_KEY,
         },
     },
+    nitro: {
+        compressPublicAssets: {
+            gzip: true,
+            brotli: true,
+        },
+        routeRules: {
+            "/**": {
+                headers: {
+                    "Cache-Control": "max-age=31536000, immutable",
+                },
+            },
+        },
+    },
     devtools: { enabled: false },
     css: ["~/assets/main.css"],
     postcss: {

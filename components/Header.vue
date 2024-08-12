@@ -4,7 +4,7 @@
         <div class="px-4 lg:px-4 xl:px-20 mx-auto lg:py-4 flex items-center justify-between transition header-wrapper"
             :class="headerScroll ? 'py-2' : 'py-6'">
             <div class="hdr-logo lg:w-auto">
-                <NuxtLink to="/">
+                <NuxtLink @click="closeMenu" to="/">
                     <nuxt-img :src="config.public.storage + header?.content?.section1_logo" alt="logo"
                         class="lg:h-[68px] max-w-full mx-auto transition duration-700 header-logo"
                         :class="headerScroll ? 'h-[64px]' : 'brightness-0 invert h-[61px]'" loading="eager" decoding="async" format="webp" quality="80"/>
@@ -22,7 +22,7 @@
                 <div
                     class="flex items-center space-x-1 hover:text-primary-600 transition lg:w-fit w-full lg:justify-normal justify-between"
                     :class="parent_page.sub_pages.length == 0 ? 'cursor-pointer' : 'cursor-default'">
-                    <NuxtLink v-if="parent_page.sub_pages.length == 0" :to="`/pages/${parent_page.slug}`">
+                    <NuxtLink @click="closeMenu" v-if="parent_page.sub_pages.length == 0" :to="`/pages/${parent_page.slug}`">
                         {{ parent_page.title }}
                     </NuxtLink>
                     <span v-else>{{ parent_page.title }}</span>
@@ -52,29 +52,29 @@
                             </div>
                             <div
                                 class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[275px] rounded-b-xl lg:shadow-md absolute -top-1 left-[calc(100%+24px)] hover-child2">
-                                <NuxtLink v-for="child_page in sub_page.child_pages"
+                                <NuxtLink @click="closeMenu" v-for="child_page in sub_page.child_pages"
                                     class="hover:text-primary-600 transition cursor-pointer" :to="`/pages/${parent_page.slug}/${sub_page.slug}/${child_page.slug}`">
                                     {{ child_page.title }}
                                 </NuxtLink>
                             </div>
                         </div>
-                        <NuxtLink v-else class="hover:text-primary-600 transition cursor-pointer" :to="`/pages/${parent_page.slug}/${sub_page.slug}`">
+                        <NuxtLink @click="closeMenu" v-else class="hover:text-primary-600 transition cursor-pointer" :to="`/pages/${parent_page.slug}/${sub_page.slug}`">
                             {{ sub_page.title }}
                         </NuxtLink>
                     </template>
                 </div>
                 <div v-if="parent_page.title === 'Industries'"
                     class="bg-white px-6 py-4 text-sm text-black flex flex-col space-y-4 min-w-[250px] rounded-b-xl lg:shadow-md absolute top-[40px] left-0 hover-child">
-                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/gaming-and-entertainment">
+                    <NuxtLink @click="closeMenu" class="hover:text-primary-600 transition cursor-pointer" to="/industries/gaming-and-entertainment">
                         Gaming and Entertainment
                     </NuxtLink>
-                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/saas">
+                    <NuxtLink @click="closeMenu" class="hover:text-primary-600 transition cursor-pointer" to="/industries/saas">
                         SaaS
                     </NuxtLink>
-                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/e-commerce">
+                    <NuxtLink @click="closeMenu" class="hover:text-primary-600 transition cursor-pointer" to="/industries/e-commerce">
                         E-Commerce
                     </NuxtLink>
-                    <NuxtLink class="hover:text-primary-600 transition cursor-pointer" to="/industries/finance">
+                    <NuxtLink @click="closeMenu" class="hover:text-primary-600 transition cursor-pointer" to="/industries/finance">
                         Finance
                     </NuxtLink>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="relative group-hover text-sm">
                     <div
                         class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <NuxtLink to="/resources">
+                        <NuxtLink @click="closeMenu" to="/resources">
                             Resources
                         </NuxtLink>
                     </div>
@@ -92,7 +92,7 @@
                 <div class="relative group-hover text-sm">
                     <div
                         class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <NuxtLink to="/careers">
+                        <NuxtLink @click="closeMenu" to="/careers">
                             Careers
                         </NuxtLink>
                     </div>
@@ -100,14 +100,14 @@
                 <div class="relative group-hover text-sm">
                     <div
                         class="flex items-center space-x-1 hover:text-primary-600 cursor-pointer transition lg:w-fit w-full lg:justify-normal justify-between">
-                        <NuxtLink to="/calculator">
+                        <NuxtLink @click="closeMenu" to="/calculator">
                             Calculator
                         </NuxtLink>
                     </div>
                 </div>
                 <div>
                     <div class="button-header px-5 py-4 lg:px-0 lg:py-0 text-sm">
-                        <NuxtLink @click.prevent="handleContactClick" to="/contact-us/#contact-form">
+                        <NuxtLink @click="closeMenu" @click.prevent="handleContactClick" to="/contact-us/#contact-form">
                             <buttons-base-button custom-class="w-full lg:w-auto" v-if="headerScroll ? '' : 'hidden'"
                                 size="md">Contact
                                 Us</buttons-base-button>
@@ -157,6 +157,10 @@ const headerAnimation = ref(false);
 const menuOpen = ref(false);
 const toggleMenu = () => {
     menuOpen.value = !menuOpen.value;
+}
+
+const closeMenu = () => {
+    menuOpen.value = false;
 }
 
 const headRef = ref<any>(null);
