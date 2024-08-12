@@ -99,26 +99,15 @@
                 </div>
                 <div class="col-span-full flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between pt-2">
                     <div>
-                        <!-- <vue-recaptcha
-                            ref="recaptchaRef"
-                            :sitekey="config.public.sitekey"
-                            @verify="verifyRecaptcha"
-                        /> -->
+                        <vue-recaptcha :sitekey="sitekey" @verify="verifySubmission" @expired="expiredRecaptcha"
+                            ref="grecaptcha"></vue-recaptcha>
                     </div>
                     <div>
-                        <!-- <buttons-base-button 
-                            custom-class="h-12 px-6 !text-base" 
-                            @click="submit"
-                            :designColor="designColor"
-                            :disabled="!form.recaptcha_response"
-                        >
-                            Submit
-                        </buttons-base-button> -->
-
                         <buttons-base-button 
                             custom-class="h-12 px-6 !text-base" 
                             @click="submit"
                             :designColor="designColor"
+                            :disabled="!form.recaptcha_response"
                         >
                             Submit
                         </buttons-base-button>
@@ -149,7 +138,11 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
-// import VueRecaptcha from 'vue-recaptcha';
+const VueRecaptcha = defineAsyncComponent({
+  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
+  loadingComponent: () => '<div>Loading...</div>',
+  delay: 4000
+});
 
 const api = useApi();
 
@@ -208,7 +201,7 @@ const form = reactive({
   industry: null,
   email: null,
   phone: null,
-  recaptcha_response: null,
+  recaptcha_response: false,
   errors: {}, // Initialize the errors object
 });
 
@@ -221,9 +214,13 @@ const emit = defineEmits(['close', 'showSuccess'])
 const recaptchaRef = ref(null)
 const recaptchaResponse = ref(null)
 
-const verifyRecaptcha = (response) => {
-  recaptchaResponse.value = response
-}
+const verifySubmission = () => {
+    form.recaptcha_response = true;
+};
+
+const expiredRecaptcha = () => {
+    form.recaptcha_response = false;
+};
 
 const reload = () => {
     showSuccessModal.value = false;
@@ -260,6 +257,8 @@ const submit = async () => {
         isSubmitting.value = false;
     }
 };
+
+const sitekey = "6Leg04gpAAAAAJvzhxc0KaQU-KvKrnWFWx3u9Gi7";
 
 onMounted(() => {
 

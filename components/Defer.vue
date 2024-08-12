@@ -4,10 +4,16 @@
 
 <script setup>
 import { onMounted } from 'vue';
-// import Lenis from '@studio-freight/lenis';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import SplitType from 'split-type';
+import Lenis from '@studio-freight/lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
+
+const VueRecaptcha = defineAsyncComponent({
+  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
+  loadingComponent: () => '<div>Loading...</div>',
+  delay: 4000
+});
 
 const lenis = new Lenis({
     duration: 1.5
@@ -36,86 +42,86 @@ animateUp.forEach(grow => {
     });
 });
 
-// const showLeft = gsap.utils.toArray('.showLeft');
-// showLeft.forEach(grow => {
-//     gsap.from(grow, {
-//         scrollTrigger: {
-//             trigger: grow,
-//             start: 'bottom 100%',
-//         },
-//         x: -40,
-//         opacity: 0,
-//         duration: 2,
-//         ease: "Expo.easeOut",
-//     });
-// });
+const showLeft = gsap.utils.toArray('.showLeft');
+showLeft.forEach(grow => {
+    gsap.from(grow, {
+        scrollTrigger: {
+            trigger: grow,
+            start: 'bottom 100%',
+        },
+        x: -40,
+        opacity: 0,
+        duration: 2,
+        ease: "Expo.easeOut",
+    });
+});
 
-// const scaleUp = gsap.utils.toArray('.scaleUp');
-// scaleUp.forEach(grow => {
-//     gsap.from(grow, {
-//         scrollTrigger: {
-//             trigger: grow,
-//             start: 'bottom 100%',
-//         },
-//         scale: 0,
-//         opacity: 0,
-//         duration: 2,
-//         ease: "Expo.easeOut",
-//     });
-// });
+const scaleUp = gsap.utils.toArray('.scaleUp');
+scaleUp.forEach(grow => {
+    gsap.from(grow, {
+        scrollTrigger: {
+            trigger: grow,
+            start: 'bottom 100%',
+        },
+        scale: 0,
+        opacity: 0,
+        duration: 2,
+        ease: "Expo.easeOut",
+    });
+});
 
-// const fadeIn = gsap.utils.toArray('.fadeIn');
-// fadeIn.forEach(grow => {
-//     gsap.from(grow, {
-//         scrollTrigger: {
-//             trigger: grow,
-//             start: 'bottom 100%',
-//         },
-//         opacity: 0,
-//         duration: 2,
-//         ease: "Expo.easeOut",
-//     });
-// });
+const fadeIn = gsap.utils.toArray('.fadeIn');
+fadeIn.forEach(grow => {
+    gsap.from(grow, {
+        scrollTrigger: {
+            trigger: grow,
+            start: 'bottom 100%',
+        },
+        opacity: 0,
+        duration: 2,
+        ease: "Expo.easeOut",
+    });
+});
 
-// const splitTypes = document.querySelectorAll('.reveal-type')
+const splitTypes = document.querySelectorAll('.reveal-type')
 
-// splitTypes.forEach((word, i) => {
+splitTypes.forEach((word, i) => {
 
-//     const text = new SplitType(word, { types: 'words' })
+    const text = new SplitType(word, { types: 'words' })
 
-//     gsap.from(text.words, {
-//         scrollTrigger: {
-//             trigger: word,
-//             start: 'top 80%',
-//             end: 'top 20%',
-//             scrub: true,
-//             markers: false,
-//         },
-//         opacity: .2,
-//         color: '#a1a1a1',
-//         stagger: 0.1
-//     })
-// })
+    gsap.from(text.words, {
+        scrollTrigger: {
+            trigger: word,
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: true,
+            markers: false,
+        },
+        opacity: .2,
+        color: '#a1a1a1',
+        stagger: 0.1
+    })
+})
 
-// const wordSplit = document.querySelectorAll('.word-split')
+const wordSplit = document.querySelectorAll('.word-split')
 
-// wordSplit.forEach((word, i) => {
+wordSplit.forEach((word, i) => {
 
-//     const text = new SplitType(word, { types: 'words' })
+    const text = new SplitType(word, { types: 'words' })
 
-//     gsap.from(text.words, {
-//         scrollTrigger: {
-//             trigger: word,
-//             start: 'top 80%',
-//             end: 'top 50%',
-//             scrub: true,
-//             markers: false,
-//         },
-//         opacity: .2,
-//         color: '#a1a1a1',
-//         stagger: 0.1
-//     })
-// })
+    gsap.from(text.words, {
+        scrollTrigger: {
+            trigger: word,
+            start: 'top 80%',
+            end: 'top 50%',
+            scrub: true,
+            markers: false,
+        },
+        opacity: .2,
+        color: '#a1a1a1',
+        stagger: 0.1
+    })
+})
 
 onMounted(() => {
     // const { initialize } = useGtag();

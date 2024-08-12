@@ -239,12 +239,12 @@
                     <input name="pdf" type="file" id="pdf" />
                 </div> -->
                 <div class="w-full flex justify-end mb-6">
-                    <!-- <vue-recaptcha
+                    <vue-recaptcha
                         :sitekey="sitekey"
                         @verify="verifySubmission"
                         @expired="expiredRecaptcha"
                         ref="grecaptcha"
-                    ></vue-recaptcha> -->
+                    ></vue-recaptcha>
                 </div>
                 <div class="w-full flex justify-end space-x-4">
                     
@@ -258,20 +258,12 @@
                         Cancel
                     </buttons-base-button>
 
-                    <!-- <buttons-base-button 
-                        size="md"
-                        designColor="text-white"
-                        custom-class="px-6 !text-base" 
-                        @click="validateAndSubmit"
-                        :disabled="!form.recaptcha_response"
-                    >
-                        Submit
-                    </buttons-base-button> -->
                     <buttons-base-button 
                         size="md"
                         designColor="text-white"
                         custom-class="px-6 !text-base" 
                         @click="validateAndSubmit"
+                        :disabled="!form.recaptcha_response"
                     >
                         Submit
                     </buttons-base-button>
@@ -315,18 +307,24 @@ import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { EnvelopeIcon } from "@heroicons/vue/24/outline";
 import pdfMake from 'pdfmake/build/pdfmake';
 
-const api = useApi();
+const VueRecaptcha = defineAsyncComponent({
+  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
+  loadingComponent: () => '<div>Loading...</div>',
+  delay: 4000
+});
 
 const form = reactive({
   email: null,
   pdf: null,
-  recaptcha_response: null,
+  recaptcha_response: false,
   errors: {},
 });
 
 const { get } = useApi();
+const api = useApi();
 const { data: cms } = await get('/page/calculator');
 const { data: items } = await get('/pricing-items');
+
 
 const props = defineProps({
     cms: {
@@ -342,13 +340,22 @@ const props = defineProps({
     country: {
         type: String,
     },
-})
-
-const VueRecaptcha = defineAsyncComponent({
-  loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
-  loadingComponent: () => '<div>Loading...</div>',
-  delay: 200,
 });
+
+const config = useRuntimeConfig();
+
+useSeoMeta({
+  title: cms.value?.title,
+  ogTitle: cms.value?.title,
+  description: cms.value?.description,
+  ogDescription: cms.value?.description,
+  keywords: cms.value?.keywords,
+  ogImage: config.public.storage + cms.value?.og_image_path,
+  twitterCard: 'summary_large_image',
+});
+
+
+
 (<any>pdfMake).fonts = {
     Roboto: {
         normal:

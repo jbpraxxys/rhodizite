@@ -91,7 +91,16 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const { get } = useApi();
 const { data: item } = await get(`/parent-page/${route.params.parentPage}`);
-console.log('Parent Page ID:', route.params.parentPage);
+const config = useRuntimeConfig();
+useSeoMeta({
+  title: item.value?.meta_title || item.value?.title,
+  ogTitle: item.value?.meta_title || item.value?.title,
+  description: item.value?.meta_description || item.value?.description,
+  ogDescription: item.value?.meta_description || item.value?.description,
+  keywords: item.value?.meta_keyword,
+  ogImage: config.public.storage + item.value?.og_image_path,
+  twitterCard: 'summary_large_image',
+})
 
 // Watch for changes in the item data
 watch(() => item.value, (newItem) => {
