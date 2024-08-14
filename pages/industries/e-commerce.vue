@@ -1,17 +1,18 @@
 <template>
     <pages-industries-ecommerce-frame-one :cms="cms" />
-    <pages-industries-ecommerce-frame-two :cms="cms" />
-    <pages-industries-ecommerce-frame-three :cms="cms" />
-    <pages-industries-ecommerce-frame-four :cms="cms" />
-    <pages-industries-ecommerce-frame-five :cms="cms" />
-    <pages-industries-ecommerce-frame-six :cms="cms" />
+    <lazy-pages-industries-ecommerce-frame-two :cms="cms" />
+    <lazy-pages-industries-ecommerce-frame-three :cms="cms" />
+    <lazy-pages-industries-ecommerce-frame-four :cms="cms" />
+    <lazy-pages-industries-ecommerce-frame-five :cms="cms" />
+    <lazy-pages-industries-ecommerce-frame-six :cms="cms" />
 </template>
 <script setup lang="ts">
-import { useHeaderState } from '~/composables/useHeaderState';
-
-const headerState = useHeaderState();
-headerState.setCustomClass('!bg-[#04193C]');
-
+definePageMeta({
+    layout: 'default',
+    layoutProps: {
+        customClass: '!bg-[#051125]',
+    }
+})
 const { get } = useApi();
 const { data: cms } = await get('/page/industries-ecommerce');
 
@@ -25,11 +26,6 @@ useSeoMeta({
   ogImage: config.public.storage + cms.value?.og_image_path,
   twitterCard: 'summary_large_image',
 })
-
-
-onUnmounted(() => {
-    headerState.setCustomClass('');
-});
 
 
 import "swiper/css/navigation";

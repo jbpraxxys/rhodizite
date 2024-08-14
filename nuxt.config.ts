@@ -13,6 +13,10 @@ export default defineNuxtConfig({
             gzip: true,
             brotli: true,
         },
+        compression: {
+            gzip: true,
+            brotli: true,
+        },
         routeRules: {
             "/**": {
                 headers: {
@@ -45,6 +49,9 @@ export default defineNuxtConfig({
             },
             charset: "utf-8",
         },
+    },
+    image: {
+        format: ['webp']
     },
     googleFonts: {
         // declare your google fonts here

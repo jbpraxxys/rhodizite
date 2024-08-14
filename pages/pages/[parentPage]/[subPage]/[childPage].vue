@@ -14,7 +14,7 @@
     />
 
     <div v-for="frame in item?.frames">
-        <sections-generic-block 
+        <lazy-sections-generic-block 
             v-if="frame.frame_type == 1 && frame.card_type == 1"
             class="pb-10 bg-primary-50"
             :class="frame.custom_class"
@@ -27,14 +27,14 @@
                 buttonLink: frame.button_link
             }"
         />
-        <sections-benefit-block 
+        <lazy-sections-benefit-block 
             v-if="frame.frame_type == 2 && frame.card_type == 1"
             class="pb-[120px]"
             :class="frame.custom_class"
             :items="frame?.cards"
         />
 
-        <sections-image-text-frame 
+        <lazy-sections-image-text-frame 
             v-if="frame.frame_type == 1 && frame.card_type == 2"
             :class="frame.custom_class"
             :item="{
@@ -46,19 +46,19 @@
             }"
         />
         
-        <sections-specialty-block 
+        <lazy-sections-specialty-block 
             v-if="frame.frame_type == 2 && frame.card_type == 2"
             class="pb-20 z-[2] relative bg-primary-50"
             :class="frame.custom_class"
             :items="frame"
         />
 
-        <sections-offer-block 
+        <lazy-sections-offer-block 
             v-if="frame.frame_type == 2 && frame.card_type == 3"
             :items="frame"
         />
 
-        <sections-text-with-map 
+        <lazy-sections-text-with-map 
             v-if="frame.frame_type == 1 && frame.card_type == 3"
             :item="{
                 title: frame.title,
@@ -67,13 +67,13 @@
             }"
         />
 
-        <sections-team-frame 
+        <lazy-sections-team-frame 
             v-if="frame.frame_type == 2 && frame.card_type == 4"
             title1="Our Leaders"
             :items="frame.cards"
         />
 
-        <sections-youtube-embed 
+        <lazy-sections-youtube-embed 
             v-if="frame.frame_type == 1 && frame.card_type == 4"
             title="Our Team"
             :item="{
@@ -83,7 +83,7 @@
         />
     </div>
 
-    <sections-contact-frame class="py-10 bg-primary-50" />
+    <lazy-sections-contact-frame class="py-10 bg-primary-50" />
 </template>
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
