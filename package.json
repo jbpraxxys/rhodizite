@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "Reliasourcing",
   "private": true,
   "type": "module",
   "scripts": {
@@ -19,6 +19,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.14",
     "@studio-freight/lenis": "^1.0.42",
+    "compression": "^1.7.4",
     "gsap": "^3.12.5",
     "lightgallery": "^2.7.2",
     "nuxt": "^3.12.3",
