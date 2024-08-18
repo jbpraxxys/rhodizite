@@ -32,9 +32,9 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
 })
 
-import "swiper/css/navigation";
-import "swiper/css/free-mode";
-import 'swiper/css';
+// import "swiper/css/navigation";
+// import "swiper/css/free-mode";
+// import 'swiper/css';
 </script>
 
 <style lang="scss">
