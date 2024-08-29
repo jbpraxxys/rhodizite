@@ -1,6 +1,6 @@
 <template>
     <footer class="bg-primary-900">
-        <div class="px-4 lg:px-20 pb-7 pt-16 lg:py-16 flex lg:flex-row flex-col lg:justify-between">
+        <div class="px-4 lg:px-10 xl:px-20 pb-7 pt-16 lg:py-16 flex lg:flex-row flex-col lg:justify-between">
             <div class="lg:max-w-[373px]">
                 <div class="py-3 mb-2">
                     <a href="/">
@@ -10,11 +10,11 @@
                 </div>
                 <p class="text-white leading-5 mb-8">{{ footer?.content.section1_address }}</p>
                 <div class="flex items-center space-x-6 mb-12 lg:mb-0">
-                    <nuxt-img v-for="accreditation in footer?.content.section1_accreditation" class="h-[40px] lg:h-[50px] w-fit"
+                    <nuxt-img v-for="accreditation in footer?.content.section1_accreditation" class="h-[40px] xl:h-[50px] w-fit"
                         :src="config.public.storage + accreditation.logo" alt="icon" loading="lazy" decoding="async" format="webp" quality="80"/>
                 </div>
             </div>
-            <div class="max-w-[780px] w-full grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16 text-white text-sm">
+            <div class="max-w-[780px] w-full grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-10 xl:gap-16 text-white text-sm">
                 <div class="space-y-3">
                     <p class="font-bold text-base">Solutions</p>
                     <div><a class="hover:text-primary-600 transition" href="/pages/solutions/contact-center">Contact
