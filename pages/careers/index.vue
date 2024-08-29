@@ -24,11 +24,11 @@
         </div>
     </section>
     <div class="bg-primary-900">
-        <div class="max-w-[1440px] m-auto lg:px-20 lg:py-32 px-4 py-16">
+        <div class="max-w-[1440px] m-auto lg:px-10 xl:px-20 lg:py-32 px-4 py-16">
             <div class="text-center text-white mb-10">
                 <p class="text-28 font-bold">{{ cms?.content.section3_header }}</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-20">
+            <div class="grid grid-cols-1 lg:grid-cols-4 xl:gap-20 lg:gap-5 gap-10">
                 <div v-for="i in cms?.content.section3_items" class="text-white">
                     <div class="w-24 m-auto mb-6">
                         <nuxt-img 

@@ -1,7 +1,14 @@
 <template>
     <div id="contact-us" class="-translate-y-24"></div>
-    <div class="flex lg:flex-row flex-col items-center justify-between max-w-[1280px] m-auto lg:p-10 pb-0">
-        <nuxt-img class="w-[483px]" src="/icons/contact-img.svg" alt="contact" loading="lazy" decoding="async" format="webp" quality="80" />
+    <div class="flex lg:flex-row flex-col items-center justify-between max-w-[1280px] m-auto xl:p-10 pb-0">
+        <nuxt-img
+            class="max-w-[483px] lg:max-w-[350px] xl:max-w-[483px] w-full" 
+            src="/icons/contact-img.svg" 
+            alt="contact"
+            loading="lazy"
+            decoding="async"
+            format="webp" quality="80"
+        />
         <div class="max-w-[656px] p-6 lg:p-8 bg-primary-900 w-full rounded-2xl">
             <div class="text-white mb-6">
                 <p class="font-semibold text-3xl mb-3">Let's Chat!</p>

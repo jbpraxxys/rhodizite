@@ -5,7 +5,7 @@
                     <h2 class="text-3xl font-bold reveal-type mb-8">{{ cms?.section3_title }}</h2>
                     <p class="text-xl font-bold word-split">{{ cms?.section3_content }}</p>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-4 w-full gap-8 lg:gap-20">
+                <div class="grid grid-cols-1 lg:grid-cols-4 w-full gap-8 lg:gap-10 xl:gap-20">
                     <cards-values-card
                         v-for="item in cms?.section3_items"
                         :item="item"

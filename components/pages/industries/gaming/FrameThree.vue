@@ -1,9 +1,9 @@
 <template>
    <section class="relative">
         <div class="max-w-[1440px] m-auto px-4 lg:px-20 pt-16 lg:pt-20 pb-[154px]">
-            <div class="grid grid-cols-1 lg:grid-cols-6 gap-3 lg:gap-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-6 gap-3 lg:gap-6 xl:gap-10 w-full">
                 <div class="flex items-center gaming-frame3-element">
-                    <div class="text-4xl lg:text-[3rem] leading-tight gaming-highlight ck-editor mb-3 reveal-type"
+                    <div class="text-4xl lg:text-[2.5rem] xl:text-[3rem] leading-tight gaming-highlight ck-editor mb-3 reveal-type"
                         v-html="cms?.content.section3_header"></div>
                 </div>
                 <div v-for="solution in cms?.content.section3_items"

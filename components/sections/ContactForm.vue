@@ -1,7 +1,7 @@
 <template>
     <div class="flex lg:flex-row flex-col items-center justify-between max-w-[1280px] m-auto lg:p-10 pb-0">
         <nuxt-img
-            class="w-[483px]" 
+            class="max-w-[483px] lg:max-w-[350px] xl:max-w-[483px] w-full" 
             src="/icons/contact-img.svg" 
             alt="contact"
             loading="lazy"

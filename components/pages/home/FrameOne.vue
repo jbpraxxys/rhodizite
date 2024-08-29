@@ -1,10 +1,10 @@
 <template>
     <section class="relative lg:h-screen">
         <div
-            class="px-4 lg:px-20 pt-[141px] lg:pt-[150px] lg:absolute lg:top-0 lg:left-0 z-[2] lg:bg-transparent bg-primary-900">
+            class="px-4 lg:px-20 pt-[141px] lg:pt-[110px] xl:pt-[150px] lg:absolute lg:top-0 lg:left-0 z-[2] lg:bg-transparent bg-primary-900">
             <!-- <div :class="['w-full lg:w-[36vw] transition duration-1000', textColorClass]"> -->
             <div class="w-full lg:w-[36vw] transition duration-1000 text-white">
-                <div class="[&>*]:[&>*]:text-5xl [&>*]:text-5xl [&>*]:leading-tight lg:[&>*]:leading-[5.8vw] lg:[&>*]:[&>*]:text-[5.1vw] lg:[&>*]:text-[5.1vw] mb-4 font-bold ck-content text-highlight lg:min-h-0 min-h-[256px]"
+                <div class="[&>*]:[&>*]:text-5xl [&>*]:text-5xl [&>*]:leading-tight lg:[&>*]:leading-[5.8vw] lg:[&>*]:[&>*]:text-[5.1vw] lg:[&>*]:text-[5.1vw] mb-4 font-bold ck-content text-highlight lg:min-h-0"
                     v-html="cms?.section1_title" />
                 <div class="max-w-[400px] mb-8 lg:mb-12">
                     <p>{{ cms?.section1_content }}</p>

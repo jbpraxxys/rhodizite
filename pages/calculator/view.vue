@@ -9,9 +9,9 @@
         customClass: '-translate-y-[100px]'
     }" />
     <section class="bg-primary-50 relative">
-        <div class="max-w-[1440px] m-auto px-4 py-16 lg:p-20 pt-0">
-            <div class="flex lg:flex-row flex-col lg:space-y-0 space-y-10 lg:space-x-12">
-                <div class="w-full lg:w-[350px] lg:p-8 rounded-[2rem] bg-primary-800/[0.02]">
+        <div class="max-w-[1440px] m-auto px-4 py-16 lg:px-20 lg:pb-20 xl:p-20 pt-0">
+            <div class="flex xl:flex-row flex-col xl:space-y-0 space-y-10 xl:space-x-12">
+                <div class="w-full xl:w-[350px] lg:p-8 rounded-[2rem] bg-primary-800/[0.02]">
                     <div class="mb-8">
                         <p class="text-3xl font-bold mb-4">Hire top talent!</p>
                         <p>For much less than you expect.</p>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full lg:w-[calc(100%-398px)]">
+                <div class="w-full xl:w-[calc(100%-398px)]">
                     <div class="p-8 bg-primary-900 rounded-[2rem] h-fit mb-8">
                         <table class="w-full text-left border-b mb-3 lg:block hidden">
                             <tr class="w-full text-white font-bold text-sm">
