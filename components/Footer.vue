@@ -35,8 +35,6 @@
                             href="/pages/specialization/creative-services">Creative
                             Services</a></div>
                     <div><a class="hover:text-primary-600 transition"
-                            href="/pages/specialization/sales-and-customer-support">Sales and Customer Support</a></div>
-                    <div><a class="hover:text-primary-600 transition"
                             href="/pages/specialization/sales-and-customer-support/sales-development-services">Sales
                             Development
                             Services</a></div>
