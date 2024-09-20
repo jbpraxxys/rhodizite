@@ -258,7 +258,7 @@ const submit = async () => {
     }
 };
 
-const sitekey = "6Leg04gpAAAAAJvzhxc0KaQU-KvKrnWFWx3u9Gi7";
+const sitekey = config.public.siteKey;
 
 onMounted(() => {
 

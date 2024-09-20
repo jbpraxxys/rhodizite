@@ -76,6 +76,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from "vue";
+const config = useRuntimeConfig();
 const VueRecaptcha = defineAsyncComponent({
   loader: () => import('vue-recaptcha').then(module => module.VueRecaptcha),
   loadingComponent: () => '<div>Loading...</div>',
@@ -154,7 +155,7 @@ const submit = async () => {
 
 
 
-const sitekey = "6Leg04gpAAAAAJvzhxc0KaQU-KvKrnWFWx3u9Gi7";
+const sitekey = config.public.siteKey;
 
 onMounted(() => {
     // Any mounted logic
